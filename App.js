@@ -6,6 +6,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import DemarrageScreen from './Screen/DemarrageScreen';
 import LoginScreen from './Screen/LoginScreen';
 import InscriptionScreen from './Screen/InscriptionScreen';
+import JoueurScreen from './Screen/JoueurScreen';
+import EntraineurScreen from './Screen/EntraineurScreen';
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
@@ -15,7 +17,9 @@ export default function App() {
      <Navigator screenOptions={{headerShown: false}}>
        <Screen name = "Smart Cage" component = {DemarrageScreen}/>
        <Screen name = "Login" component={LoginScreen}/>
-       <Screen name ="Inscription" component={InscriptionScreen}/>
+       <Screen name = "Inscription" component={InscriptionScreen}/>
+       <Screen name = "JoueurInterface" component={JoueurScreen}/>
+       <Screen name = "EntraineurInterface" component={EntraineurScreen}/>
      </Navigator>
    </NavigationContainer>
   );
