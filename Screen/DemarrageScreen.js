@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Alert, TextInput, Image} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Alert, TextInput, Image} from 'react-native';
 import { NavigationContainer, createNativeStackNavigator } from '@react-navigation/native';
 
 const DemarrageScreen = (props)=>{
@@ -16,12 +16,10 @@ const DemarrageScreen = (props)=>{
           />
   
         </View>
-      <View style={styles.BoutonConnexion}>
-      <Button
-          title="Connexion"
-          onPress={goToLogin}
-          color="#39AD69"
-        />
+      <View>
+      <TouchableOpacity style={styles.BoutonConnexion} onPress={goToLogin}>
+        <Text>Connexion</Text>
+        </TouchableOpacity>
         <StatusBar style="light" />
       </View>
       </SafeAreaView>
@@ -50,7 +48,11 @@ const styles = StyleSheet.create({
     BoutonConnexion: {
       top:200,
       width:200,
-      zIndex:999,
+      height:50,
+      borderRadius:10,
+      backgroundColor:"#39AD69",
+      alignItems:"center",
+      justifyContent:"center"
 
     },
   
