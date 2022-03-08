@@ -1,11 +1,39 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Alert, ImageBackground, Image} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput} from 'react-native';
 
 const LoginScreen = (props) => {
+
+  const [usernametext, onChangeUsernameText] = React.useState(null);
+  const [passwordtext, onChangePasswordText] = React.useState(null);
+
+  const goToEntraineur = () => {
+    props.navigation.push('Login');
+  }
+
+  const goToJoueur = () => {
+    props.navigation.push('Login');
+  }
+
   return(
   <SafeAreaView style={styles.container}>
-    <View >
-      <Text>LoginScreen</Text>
+    <View style={styles.usernameBlock}>
+      <TextInput 
+              style={styles.usernameText}
+              onChangeText={onChangeUsernameText}
+              value={usernametext}
+              placeholder="Nom d'utilisateur"
+      />
+    </View>
+    <View style={styles.passwordBlock}>
+      <TextInput 
+              style={styles.passwordText}
+              onChangeText={onChangePasswordText}
+              value={passwordtext}
+              placeholder="Mot de passe"
+      />
+    </View>
+    <View>
+
     </View>
   </SafeAreaView>   
   );
@@ -14,14 +42,42 @@ const LoginScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent:'center',
     alignItems:'center',
-    backgroundColor:'lightgrey'
+    backgroundColor:'#013E23'
   },
 
-  name: {
-    
+  usernameBlock: {
+    marginTop:250,
+    alignItems:'center',
+    justifyContent:'center'
+  },
+
+  usernameText: {
+    padding:10,
+    justifyContent:'center',
+    width:200,
+    height:50,
+    fontSize:20,
+    borderRadius:10,
+    backgroundColor:"#39AD69",
+    textAlign:'center'
+  },
+
+  passwordBlock: {
+    top:20,
+  },
+
+  passwordText: {
+    padding:10,
+    justifyContent:'center',
+    width:200,
+    height:50,
+    fontSize:20,
+    borderRadius:10,
+    backgroundColor:"#39AD69",
+    textAlign:'center'
   }
+
 })
 
 export default LoginScreen;

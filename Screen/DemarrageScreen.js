@@ -20,7 +20,6 @@ const DemarrageScreen = (props)=>{
       <TouchableOpacity style={styles.BoutonConnexion} onPress={goToLogin}>
         <Text>Connexion</Text>
         </TouchableOpacity>
-        <StatusBar style="light" />
       </View>
       </SafeAreaView>
     );
