@@ -6,11 +6,11 @@ const LoginScreen = (props) => {
   const [usernametext, onChangeUsernameText] = React.useState(null);
   const [passwordtext, onChangePasswordText] = React.useState(null);
 
-  const goToEntraineur = () => {
+  const goToEntraineurScreen = () => {
     props.navigation.push('Login');
   }
 
-  const goToJoueur = () => {
+  const goToJoueurScreen = () => {
     props.navigation.push('Login');
   }
 
