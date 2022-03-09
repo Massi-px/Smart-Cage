@@ -3,11 +3,11 @@ import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Alert, TextInput, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import DemarrageScreen from './Screen/DemarrageScreen';
-import LoginScreen from './Screen/LoginScreen';
-import InscriptionScreen from './Screen/InscriptionScreen';
-import JoueurScreen from './Screen/JoueurScreen';
-import EntraineurScreen from './Screen/EntraineurScreen';
+import DemarrageScreen from './screen/DemarrageScreen';
+import LoginScreen from './screen/LoginScreen';
+import InscriptionScreen from './screen/InscriptionScreen';
+import JoueurScreen from './screen/JoueurScreen';
+import EntraineurScreen from './screen/EntraineurScreen';
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
