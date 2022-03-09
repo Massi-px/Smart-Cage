@@ -1,10 +1,18 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput} from 'react-native';
+import { useState } from 'react/cjs/react.production.min';
 
 const LoginScreen = (props) => {
+  
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [usernametext, onChangeUsernameText] = React.useState(null);
-  const [passwordtext, onChangePasswordText] = React.useState(null);
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const usernameHandler = (text) => {
+    setUsername(text);
+  } 
+
 
   const goToEntraineur = () => {
     props.navigation.push('EntraineurInterface');
@@ -17,23 +25,19 @@ const LoginScreen = (props) => {
   return(
   <SafeAreaView style={styles.container}>
     <View style={styles.usernameBlock}>
-      <TextInput 
-              style={styles.usernameText}
-              onChangeText={onChangeUsernameText}
-              value={usernametext}
-              placeholder="Nom d'utilisateur"
+      <TextInput style={styles.usernameText} 
+      placeholder="Nom d'utilisateur" 
+      autoCapitalize='none'
+      onChangeText={usernameHandler}
       />
     </View>
+
     <View style={styles.passwordBlock}>
-      <TextInput 
-              style={styles.passwordText}
-              onChangeText={onChangePasswordText}
-              value={passwordtext}
-              placeholder="Mot de passe"
-      />
+      <TextInput style={styles.passwordText} placeholder="Mot de passe" secureTextEntry={true} autoCapitalize='none'/>
     </View>
+
     <View>
-    <TouchableOpacity style={styles.BoutonConnexion} onPress={goToJoueur}>
+    <TouchableOpacity style={styles.BoutonConnexion} onPress={() => setIsSubmit(true)}>
         <Text>Connexion</Text>
         </TouchableOpacity>
     </View>
