@@ -1,6 +1,8 @@
 import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput} from 'react-native';
-import { useState } from 'react/cjs/react.production.min';
+import { useEffect, useState } from 'react/cjs/react.production.min';
+import axios from "axios";
 
 const LoginScreen = (props) => {
   
@@ -13,6 +15,13 @@ const LoginScreen = (props) => {
     setUsername(text);
   } 
 
+  useEffect(()=> {
+    const authenticate = async() => {
+      axios.post();
+    }
+  }
+
+  )
 
   const goToEntraineur = () => {
     props.navigation.push('EntraineurInterface');
