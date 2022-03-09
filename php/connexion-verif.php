@@ -7,7 +7,10 @@ session_start();
  $nom = $obj['nom'];
  $password = $obj['password'];
 
- $query = "SELECT * FROM utilisateurs WHERE nom = '{$nom}'";
+ if($obj['nom']!=""){
+
+ }
+ $result=$mysqli->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password='$password'");
  
  $query_output = mysqli_query($conn, $querry);
  $count = mysqli_num_rows($query_output);
