@@ -6,12 +6,12 @@ const LoginScreen = (props) => {
   const [usernametext, onChangeUsernameText] = React.useState(null);
   const [passwordtext, onChangePasswordText] = React.useState(null);
 
-  const goToEntraineurScreen = () => {
-    props.navigation.push('Login');
+  const goToEntraineur = () => {
+    props.navigation.push('EntraineurInterface');
   }
 
-  const goToJoueurScreen = () => {
-    props.navigation.push('Login');
+  const goToJoueur = () => {
+    props.navigation.push('JoueurInterface');
   }
 
   return(
@@ -33,7 +33,9 @@ const LoginScreen = (props) => {
       />
     </View>
     <View>
-
+    <TouchableOpacity style={styles.BoutonConnexion} onPress={goToJoueur}>
+        <Text>Connexion</Text>
+        </TouchableOpacity>
     </View>
   </SafeAreaView>   
   );
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   },
 
   usernameBlock: {
-    marginTop:250,
+    marginTop:350,
     alignItems:'center',
     justifyContent:'center'
   },
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     height:50,
     fontSize:20,
     borderRadius:10,
-    backgroundColor:"#39AD69",
+    backgroundColor:"#FFF",
     textAlign:'center'
   },
 
@@ -74,9 +76,20 @@ const styles = StyleSheet.create({
     height:50,
     fontSize:20,
     borderRadius:10,
-    backgroundColor:"#39AD69",
+    backgroundColor:"#FFF",
     textAlign:'center'
-  }
+  },
+
+  BoutonConnexion: {
+    top:100,
+    width:200,
+    height:50,
+    borderRadius:10,
+    backgroundColor:"#39AD69",
+    alignItems:"center",
+    justifyContent:"center"
+
+  },
 
 })
 
