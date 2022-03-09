@@ -1,27 +1,36 @@
-import * as React from 'react';
-import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput} from 'react-native';
-import { useEffect, useState } from 'react/cjs/react.production.min';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
 const LoginScreen = (props) => {
   
-  const [username, setUsername] = useState("");
+  const [nom, setNom] = useState("");
   const [password, setPassword] = useState("");
 
   const [isSubmit, setIsSubmit] = useState(false);
 
   const usernameHandler = (text) => {
-    setUsername(text);
+    setNom(text);
   } 
 
-  useEffect(()=> {
+  useEffect(() => {
     const authenticate = async() => {
-      axios.post();
-    }
-  }
+      axios.post("../MySQL/config.php",
+      JSON.stringify({
+        username: nom,
+        password: password,
+      })
+    ).then((response) => {
+      console.log(response);
+      setIsSubmit(false);
+    })
+    .catch((err)=>{
+      console.log(err);
 
-  )
+    });
+  }
+  if (isSubmit)  authenticate();
+}, [isSubmit])
 
   const goToEntraineur = () => {
     props.navigation.push('EntraineurInterface');
