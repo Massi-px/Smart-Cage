@@ -23,6 +23,11 @@ const LoginScreen = (props) => {
 
   return(
   <SafeAreaView style={styles.container}>
+    <View style={styles.Logo}>
+      <Image
+        source={require('../assets/image/logo1.png')}
+      />
+    </View>
     <View style={styles.usernameBlock}>
       <TextInput style={styles.usernameText} 
       placeholder="Nom d'utilisateur" 
@@ -42,7 +47,7 @@ const LoginScreen = (props) => {
 
     <View>
     <TouchableOpacity style={styles.BoutonConnexion} onPress={goToJoueur}>
-        <Text>Connexion</Text>
+        <Text style = {styles.BoutonText}>Connexion</Text>
         </TouchableOpacity>
     </View>
   </SafeAreaView>   
@@ -56,8 +61,12 @@ const styles = StyleSheet.create({
     backgroundColor:'#013E23'
   },
 
+  Logo: {
+    top:80,
+  },
+
   usernameBlock: {
-    marginTop:350,
+    marginTop:200,
     alignItems:'center',
     justifyContent:'center'
   },
@@ -70,6 +79,7 @@ const styles = StyleSheet.create({
     fontSize:20,
     borderRadius:10,
     backgroundColor:"#FFF",
+    fontFamily: 'SFLight',
     textAlign:'center'
   },
 
@@ -78,6 +88,7 @@ const styles = StyleSheet.create({
   },
 
   passwordText: {
+    fontFamily: 'SFLight',
     padding:10,
     justifyContent:'center',
     width:200,
@@ -98,6 +109,11 @@ const styles = StyleSheet.create({
     justifyContent:"center"
 
   },
+
+  BoutonText: {
+    fontSize: 20,
+    fontFamily: 'SFLight',
+  }
 
 })
 

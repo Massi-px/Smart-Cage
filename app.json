@@ -4,9 +4,9 @@
     "slug": "test",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/image/icon.png",
     "splash": {
-      "image": "./assets/splash1.png",
+      "image": "./assets/image/splash1.png",
       "resizeMode": "contain",
       "backgroundColor": "#013E23"
     },
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/image/adaptive-icon.png",
         "backgroundColor": "#013E23"
       },
       "splash":{
@@ -33,7 +33,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/image/favicon.png"
     }
     
   }

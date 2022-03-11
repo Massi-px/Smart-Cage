@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, SafeAreaView, Button, Alert, ImageBackground, I
 
 const EntraineurScreen = (props) => {
   return(
-  <SafeAreaView>
-    <View style={styles.container}>
+  <SafeAreaView style={styles.container}>
+    <View>
         <Text>Accueil Screen</Text>
     </View>
   </SafeAreaView>
@@ -14,9 +14,8 @@ const EntraineurScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems:'center',
-    backgroundColor:'lightgrey'
+    backgroundColor: '#013E23'
   }
 })
 
