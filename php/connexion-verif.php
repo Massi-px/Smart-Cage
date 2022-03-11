@@ -14,3 +14,4 @@ session_start();
  
  $query_output = mysqli_query($conn, $querry);
  $count = mysqli_num_rows($query_output);
+ ?>

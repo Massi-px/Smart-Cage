@@ -43,3 +43,4 @@
             }else{ header('Location: /SmartCage/inscription.php?reg_err=nom_length'); die();}
         }else{ header('Location: /SmartCage/inscription.php?reg_err=already'); die();}
     }
+    ?>
