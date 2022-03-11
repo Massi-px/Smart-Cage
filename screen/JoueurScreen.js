@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
 
   TextAccueil:{
-    fontFamily: 'SFLight',
+    fontFamily: 'SFMedium',
     fontSize:20,
     color:'lightgrey'
   },

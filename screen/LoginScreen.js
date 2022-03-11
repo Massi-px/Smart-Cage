@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize:20,
     borderRadius:10,
     backgroundColor:"#FFF",
-    fontFamily: 'SFLight',
+    fontFamily: 'SFMedium',
     textAlign:'center'
   },
 
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
 
   passwordText: {
-    fontFamily: 'SFLight',
+    fontFamily: 'SFMedium',
     padding:10,
     justifyContent:'center',
     width:200,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
 
   BoutonText: {
     fontSize: 20,
-    fontFamily: 'SFLight',
+    fontFamily: 'SFMedium',
   }
 
 })

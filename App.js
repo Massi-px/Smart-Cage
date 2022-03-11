@@ -13,7 +13,8 @@ const {Navigator, Screen} = createNativeStackNavigator();
 export default function App() {
 
 const[loaded] = useFonts({
-  SFLight: require('./assets/fonts/SF-Pro-Text-Light.otf'), 
+  SFLight: require('./assets/fonts/SF-Pro-Text-Light.otf'),
+  SFMedium: require('./assets/fonts/SF-Pro-Text-Medium.otf'),
 });
 
 if (!loaded) {
