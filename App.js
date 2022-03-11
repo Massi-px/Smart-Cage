@@ -17,9 +17,9 @@ export default function App() {
      <Navigator screenOptions={{headerShown: false}}>
        <Screen name = "Smart Cage" component = {DemarrageScreen}/>
        <Screen name = "Login" component={LoginScreen}/>
-       <Screen name = "Inscription" component={InscriptionScreen}/>
        <Screen name = "JoueurInterface" component={JoueurScreen}/>
        <Screen name = "EntraineurInterface" component={EntraineurScreen}/>
+       <Screen name = "Inscription" component={InscriptionScreen}/>
      </Navigator>
    </NavigationContainer>
   );

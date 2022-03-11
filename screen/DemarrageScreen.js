@@ -12,7 +12,7 @@ const DemarrageScreen = (props)=>{
       <SafeAreaView style={styles.container}>
         <View style={styles.Logo}>
           <Image
-            source={require('../assets/logo2.png')}
+            source={require('../assets/logo1.png')}
           />
   
         </View>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     },
   
     Logo: {
-      top:60,
+      top:80,
     },
   
     Title: {

@@ -11,26 +11,7 @@ const LoginScreen = (props) => {
 
   const usernameHandler = (text) => {
     setNom(text);
-  } 
-
-  useEffect(() => {
-    const authenticate = async() => {
-      axios.post("../MySQL/config.php",
-      JSON.stringify({
-        username: nom,
-        password: password,
-      })
-    ).then((response) => {
-      console.log(response);
-      setIsSubmit(false);
-    })
-    .catch((err)=>{
-      console.log(err);
-
-    });
   }
-  if (isSubmit)  authenticate();
-}, [isSubmit])
 
   const goToEntraineur = () => {
     props.navigation.push('EntraineurInterface');
@@ -51,11 +32,16 @@ const LoginScreen = (props) => {
     </View>
 
     <View style={styles.passwordBlock}>
-      <TextInput style={styles.passwordText} placeholder="Mot de passe" secureTextEntry={true} autoCapitalize='none'/>
+      <TextInput style={styles.passwordText} 
+      placeholder="Mot de passe" 
+      secureTextEntry={true} 
+      autoCapitalize='none'
+      onChangeText={setPassword}
+      />
     </View>
 
     <View>
-    <TouchableOpacity style={styles.BoutonConnexion} onPress={() => setIsSubmit(true)}>
+    <TouchableOpacity style={styles.BoutonConnexion} onPress={goToJoueur}>
         <Text>Connexion</Text>
         </TouchableOpacity>
     </View>
