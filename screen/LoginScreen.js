@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput, StatusBar} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
@@ -8,6 +8,8 @@ const LoginScreen = (props) => {
   const [password, setPassword] = useState("");
 
   const [isSubmit, setIsSubmit] = useState(false);
+
+  const [hidden, setHidden] = useState(false);
 
   const usernameHandler = (text) => {
     setNom(text);

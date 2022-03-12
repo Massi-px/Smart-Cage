@@ -7,6 +7,7 @@ import LoginScreen from './screen/LoginScreen';
 import InscriptionScreen from './screen/InscriptionScreen';
 import JoueurScreen from './screen/JoueurScreen';
 import EntraineurScreen from './screen/EntraineurScreen';
+import JoueurParametreScreen from './screen/JoueurParametreScreen';
 import {useFonts} from 'expo-font'
 const {Navigator, Screen} = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ if (!loaded) {
        <Screen name = "JoueurInterface" component={JoueurScreen}/>
        <Screen name = "EntraineurInterface" component={EntraineurScreen}/>
        <Screen name = "Inscription" component={InscriptionScreen}/>
+       <Screen name = "JoueurParametre" component={JoueurParametreScreen}/>
      </Navigator>
    </NavigationContainer>
   );
