@@ -1,20 +1,27 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-const { width, height } = Dimensions.get('window');
 
 const JoueurScreen = (props) => {
-
+  
   const goToJoueurParametre = () => {
     props.navigation.push('JoueurParametre');
   }
 
+  const openDrawer =() =>{
+    props.navigation.openDrawer;
+  }
+  
   return(
   <SafeAreaView style={styles.container}>
     <View style = {styles.Header}>
-      <View>
-        
-      </View>
+        <View style={styles.BlockHamburgerMenu}>
+          <TouchableOpacity onPress={openDrawer}>
+            <FontAwesome5 name="bars" size={24} color='lightgrey' />
+            
+          </TouchableOpacity>
+        </View>
         <View style = {styles.BlockTextAccueil}>
           <Text style = {styles.TextAccueil}>Accueil</Text>
         </View>
@@ -46,6 +53,10 @@ const styles = StyleSheet.create({
     flexDirection:'row'
   },
 
+  BlockHamburgerMenu:{
+    right:160,
+  },
+
  BlockTextAccueil: {
   alignItems:'center',
   },
@@ -57,13 +68,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   parametre:{
-    left:180,
+    left:160,
   },
   pageContenu:{
     backgroundColor:'white',
     width:'100%',
     height:'100%',
-    borderRadius:10,
+    borderRadius:40,
   },
 
 })

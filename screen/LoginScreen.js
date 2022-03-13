@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     width:200,
     height:50,
     fontSize:20,
-    borderRadius:10,
+    borderRadius:20,
     backgroundColor:"#FFF",
     fontFamily: 'SFMedium',
     textAlign:'center'
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     width:200,
     height:50,
     fontSize:20,
-    borderRadius:10,
+    borderRadius:20,
     backgroundColor:"#FFF",
     textAlign:'center'
   },
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     top:100,
     width:200,
     height:50,
-    borderRadius:10,
+    borderRadius:20,
     backgroundColor:"#39AD69",
     alignItems:"center",
     justifyContent:"center"
