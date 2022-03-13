@@ -11,8 +11,24 @@ import InscriptionScreen from './screen/InscriptionScreen';
 import JoueurScreen from './screen/JoueurScreen';
 import EntraineurScreen from './screen/EntraineurScreen';
 import JoueurParametreScreen from './screen/JoueurParametreScreen';
+import JoueurProgressionScreen from './screen/JoueurProgressionScreen';
+import { Dimensions } from 'react-native';
 import {useFonts} from 'expo-font'
+
+
 const {Navigator, Screen} = createNativeStackNavigator();
+
+const Drawer = createDrawerNavigator();
+
+
+const DrawerNav = () =>{
+  <Drawer.Navigator>
+  <Drawer.Screen name="Accueil" component={JoueurScreen} />
+  <Drawer.Screen name="Progression" component={JoueurProgressionScreen} />
+</Drawer.Navigator>
+}
+
+
 
 export default function App() {
 
@@ -24,7 +40,6 @@ const[loaded] = useFonts({
 if (!loaded) {
   return null;
 }
-
   return (
    <NavigationContainer>
      <Navigator screenOptions={{headerShown: false}}>
@@ -33,6 +48,7 @@ if (!loaded) {
        <Screen name = "EntraineurInterface" component={EntraineurScreen}/>
        <Screen name = "Inscription" component={InscriptionScreen}/>
        <Screen name = "JoueurParametre" component={JoueurParametreScreen}/>
+       <Screen name = "JoueuProgression" component={JoueurProgressionScreen}/>
      </Navigator>
    </NavigationContainer>
   );

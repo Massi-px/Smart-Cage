@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, SafeAreaView, Button, Alert, ImageBackground, I
 
 const JoueurParametreScreen = (props) => {
   return(
-  <SafeAreaView>
-    <View style={styles.container}>
+  <SafeAreaView style={styles.container}>
+    <View>
         <Text>Joueur Parametre Screen</Text>
     </View>
   </SafeAreaView>
