@@ -12,6 +12,9 @@ const JoueurScreen = (props) => {
   return(
   <SafeAreaView style={styles.container}>
     <View style = {styles.Header}>
+      <View>
+        
+      </View>
         <View style = {styles.BlockTextAccueil}>
           <Text style = {styles.TextAccueil}>Accueil</Text>
         </View>
