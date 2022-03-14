@@ -16,17 +16,7 @@ import { Dimensions } from 'react-native';
 import {useFonts} from 'expo-font'
 
 
-const {Navigator, Screen} = createNativeStackNavigator();
-
-const Drawer = createDrawerNavigator();
-
-
-const DrawerNav = () =>{
-  <Drawer.Navigator>
-  <Drawer.Screen name="Accueil" component={JoueurScreen} />
-  <Drawer.Screen name="Progression" component={JoueurProgressionScreen} />
-</Drawer.Navigator>
-}
+const Naviguer = createNativeStackNavigator();
 
 
 
@@ -42,14 +32,14 @@ if (!loaded) {
 }
   return (
    <NavigationContainer>
-     <Navigator screenOptions={{headerShown: false}}>
-       <Screen name = "Login" component={LoginScreen}/>
-       <Screen name = "JoueurInterface" component={JoueurScreen}/>
-       <Screen name = "EntraineurInterface" component={EntraineurScreen}/>
-       <Screen name = "Inscription" component={InscriptionScreen}/>
-       <Screen name = "JoueurParametre" component={JoueurParametreScreen}/>
-       <Screen name = "JoueuProgression" component={JoueurProgressionScreen}/>
-     </Navigator>
+     <Naviguer.Navigator screenOptions={{headerShown: false}}>
+       <Naviguer.Screen name = "Login" component={LoginScreen}/>
+       <Naviguer.Screen name = "JoueurInterface" component={JoueurScreen}/>
+       <Naviguer.Screen name = "EntraineurInterface" component={EntraineurScreen}/>
+       <Naviguer.Screen name = "Inscription" component={InscriptionScreen}/>
+       <Naviguer.Screen name = "JoueurParametre" component={JoueurParametreScreen}/>
+       <Naviguer.Screen name = "JoueuProgression" component={JoueurProgressionScreen}/>
+     </Naviguer.Navigator>
    </NavigationContainer>
   );
 }

@@ -1,23 +1,34 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import JoueurParametreScreen from './JoueurParametreScreen';
+import JoueurProgressionScreen from './JoueurProgressionScreen';
+
+const Drawer = createDrawerNavigator();
 
 
 const JoueurScreen = (props) => {
-  
+
+
+
   const goToJoueurParametre = () => {
     props.navigation.push('JoueurParametre');
   }
-
-  const openDrawer =() =>{
+  
+  const openMenu = () => {
     props.navigation.openDrawer;
   }
-  
+
   return(
   <SafeAreaView style={styles.container}>
+    <Drawer.Navigator>
+      <Drawer.Screen name='Progression' component={JoueurProgressionScreen}/>
+    </Drawer.Navigator>
     <View style = {styles.Header}>
         <View style={styles.BlockHamburgerMenu}>
-          <TouchableOpacity onPress={openDrawer}>
+          <TouchableOpacity onPress={openMenu}>
             <FontAwesome5 name="bars" size={24} color='lightgrey' />
             
           </TouchableOpacity>
@@ -48,9 +59,9 @@ const styles = StyleSheet.create({
   Header: {
     marginTop:30,
     marginBottom:10,
-    justifyContent:'center',
     alignItems:'center',
-    flexDirection:'row'
+    flexDirection:'row',
+    justifyContent:'center'
   },
 
   BlockHamburgerMenu:{
