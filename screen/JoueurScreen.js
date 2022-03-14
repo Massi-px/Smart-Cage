@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   },
 
   BlockHamburgerMenu:{
-    right:160,
-  },
+    left: -80,
+    },
 
  BlockTextAccueil: {
   alignItems:'center',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   parametre:{
-    left:160,
+    right:-80,
   },
   pageContenu:{
     backgroundColor:'white',
