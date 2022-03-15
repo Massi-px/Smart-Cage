@@ -3,10 +3,9 @@ import { DrawerActions, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
-const LoginScreen = (props) => {
-  
-  
+/*Création de l'ecran LoginScreen qui consistera à logger/identifier les tulisateurs */
 
+const LoginScreen = (props) => {
 
   const [nom, setNom] = useState("");
   const [password, setPassword] = useState("");
@@ -18,11 +17,11 @@ const LoginScreen = (props) => {
   const usernameHandler = (text) => {
     setNom(text);
   }
-
+//La fonction goToEntraineur sert à passer à l'Ecran EntrâineurScreen
   const goToEntraineur = () => {
     props.navigation.push('EntraineurInterface');
   }
-
+//La fonction constante goToJoueur sert à passer à l'Ecran JoueurScreen
   const goToJoueur = () => {
     props.navigation.push('JoueurInterface');
   }
@@ -59,7 +58,9 @@ const LoginScreen = (props) => {
   </SafeAreaView>   
   );
 };
+/*Fin Ecran LoginScreen */
 
+//Fonction styles contenur le design en CSS
 const styles = StyleSheet.create({
   container: {
     flex: 1,

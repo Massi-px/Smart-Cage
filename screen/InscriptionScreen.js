@@ -11,6 +11,7 @@ const InscriptionScreen = (props) => {
   );
 };
 
+//Fonction styles contenur le design en CSS
 const styles = StyleSheet.create({
   container: {
     flex: 1,

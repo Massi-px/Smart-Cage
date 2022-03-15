@@ -6,26 +6,19 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import JoueurParametreScreen from './JoueurParametreScreen';
 import JoueurProgressionScreen from './JoueurProgressionScreen';
 
-const Drawer = createDrawerNavigator();
-
-
 const JoueurScreen = (props) => {
-
-
 
   const goToJoueurParametre = () => {
     props.navigation.push('JoueurParametre');
   }
   
   const openMenu = () => {
-    props.navigation.openDrawer;
+    props.navigation.openDrawer();
   }
 
   return(
   <SafeAreaView style={styles.container}>
-    <Drawer.Navigator>
-      <Drawer.Screen name='Progression' component={JoueurProgressionScreen}/>
-    </Drawer.Navigator>
+
     <View style = {styles.Header}>
         <View style={styles.BlockHamburgerMenu}>
           <TouchableOpacity onPress={openMenu}>
@@ -48,6 +41,7 @@ const JoueurScreen = (props) => {
   );
 };
 
+//Fonction styles contenur le design en CSS
 const styles = StyleSheet.create({
   container: {
     flex:1,
