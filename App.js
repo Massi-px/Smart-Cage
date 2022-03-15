@@ -35,9 +35,8 @@ function MenuDrawer(){
 }
 //Fin fonction Menudrawer
 
-//Application mobile :
+/*Application mobile :*/
 export default function App() {
-
 //Fonction ajoutant les styles de polices voulut dans l'application:
 const[loaded] = useFonts({
   SFLight: require('./assets/fonts/SF-Pro-Text-Light.otf'),
@@ -56,7 +55,7 @@ if (!loaded) {
 
 //Naviguer est un naviguateur de type Stack permettant de passé d'un écran à un autre dans l'application.
    <NavigationContainer>
-     <Naviguer.Navigator screenOptions={{headerShown: false}}>
+     <Naviguer.Navigator screenOptions={{headerShown: false}} initialRouteName= "Login">
        <Naviguer.Screen name = "Login" component={LoginScreen}/>
        <Naviguer.Screen name = "JoueurInterface" component={MenuDrawer}/>
        <Naviguer.Screen name = "EntraineurInterface" component={EntraineurScreen}/>
@@ -68,3 +67,4 @@ if (!loaded) {
 /*Fin conteneur de naviguateur */
   );
 }
+/* Fin application mobile */

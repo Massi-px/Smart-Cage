@@ -10,9 +10,13 @@
     try 
     {
         $bdd = new PDO("mysql:host=192.168.43.171:8080;dbname=projet;charset=utf8", "root", "smart");
+        $retour["success"]= true;
+        $retour["message"]="Connexion  la base de donnée réussie";
     }
     catch(PDOException $e)
     {
-        die('Erreur : '.$e->getMessage());
+        $retour["success"]= false;
+        $retour["message"]="Connexion  la base de donnée impossible";
     }
 ?>
+

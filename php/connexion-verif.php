@@ -1,17 +1,26 @@
 <?php
-session_start();
- require_once 'config.php'; // On inclu la connexion à la bdd
- $json = file_get_contents('php://input');
- $obj = json_decode($json, true);
+// Importing DBConfig.php file.
+include 'config.php';
+// Populate User nom from JSON $obj array and store into $nom.
+$nom = $obj['nom'];
 
- $nom = $obj['nom'];
- $password = $obj['password'];
-
- if($obj['nom']!=""){
-
- }
- $result=$mysqli->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password='$password'");
  
- $query_output = mysqli_query($conn, $querry);
- $count = mysqli_num_rows($query_output);
- ?>
+// Populate Password from JSON $obj array and store into $password.
+$password = $obj['password'];
+
+$query = "SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'";
+$exeSQL = PDO::query($con, $SQL);
+$checkNom = PDOStatement::rowCount($exeSQL);
+if ($nom != 0){
+    $arrayu = PDOStatement::rowCount($exeSQL);
+    if ($arrayu['password'] != $password) {
+        $Message = "Mot de passe incorrect !";
+    } else {
+        $Message = "Connexion effectué avec succès !";
+    }
+}   else {
+    $Message = "Utilisateur Inconnu";
+}
+
+$response[] = array ("Message" => $Message);
+echo json_encode($response);

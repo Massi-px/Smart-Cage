@@ -3,12 +3,7 @@
     // On verifie si les variables existent et qu'elles ne sont pas vides
     if(!empty($_POST['nom']) && !empty($_POST['password']) && !empty($_POST['password_retype']))
     {
-        // Patch XSS
-        $nom = htmlspecialchars($_POST['nom']);
-        $prenom = htmlspecialchars($_POST['prenom']);
-        $password = htmlspecialchars($_POST['password']);
-        $password_retype = htmlspecialchars($_POST['password_retype']);
-        $categorie = htmlspecialchars($_POST['categorie']);
+    
 
         // On vérifie si l'utilisateur existe dans notre base de donnée
         $check = $bdd->prepare('SELECT nom, password, type FROM utilisateurs WHERE nom = ?');

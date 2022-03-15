@@ -5,18 +5,37 @@ import axios from "axios";
 
 /*Création de l'ecran LoginScreen qui consistera à logger/identifier les tulisateurs */
 
-const LoginScreen = (props) => {
+
+
+const LoginScreen = (props) => {  
+
 
   const [nom, setNom] = useState("");
   const [password, setPassword] = useState("");
 
   const [isSubmit, setIsSubmit] = useState(false);
 
+  useEffect(()=>{
+    const authenticate = async() => {
+      axios.post("http://192.168.43.171:8080/SmartCage/php/connexion-verif.php",
+      JSON.stringify({
+        nom: nom,
+        password: password,
+      })
+      )
+      .then((response) =>{
+        console.log(response.data);
+        setIsSubmit(false);
+      })
+      .catch((err)=>{
+        console.log(err);
+      });
+    };
+    if (isSubmit) authenticate();
+  },[isSubmit])
+
   const [hidden, setHidden] = useState(false);
 
-  const usernameHandler = (text) => {
-    setNom(text);
-  }
 //La fonction goToEntraineur sert à passer à l'Ecran EntrâineurScreen
   const goToEntraineur = () => {
     props.navigation.push('EntraineurInterface');
@@ -37,21 +56,22 @@ const LoginScreen = (props) => {
       <TextInput style={styles.usernameText} 
       placeholder="Nom d'utilisateur" 
       autoCapitalize='none'
-      onChangeText={usernameHandler}
+      onChangeText={setNom}
       />
     </View>
 
     <View style={styles.passwordBlock}>
       <TextInput style={styles.passwordText} 
       placeholder="Mot de passe" 
-      secureTextEntry={true} 
+      secureTextEntry={true}
       autoCapitalize='none'
       onChangeText={setPassword}
       />
     </View>
 
     <View>
-    <TouchableOpacity style={styles.BoutonConnexion} onPress={goToJoueur}>
+    <TouchableOpacity style={styles.BoutonConnexion} 
+    onPress={() => setIsSubmit(true)}>
         <Text style = {styles.BoutonText}>Connexion</Text>
         </TouchableOpacity>
     </View>
