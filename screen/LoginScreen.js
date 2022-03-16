@@ -15,9 +15,11 @@ const LoginScreen = (props) => {
 
   const [isSubmit, setIsSubmit] = useState(false);
 
+ 
+
   useEffect(()=>{
     const authenticate = async() => {
-      axios.post("http://192.168.43.171:8080/SmartCage/php/connexion-verif.php",
+      axios.post("http://192.168.43.171:8080/SmartCage/php/config.php",
       JSON.stringify({
         nom: nom,
         password: password,
