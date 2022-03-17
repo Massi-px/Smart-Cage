@@ -1,2 +1,0 @@
-# SmartCage
- Projet BTS SNIR
