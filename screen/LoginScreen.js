@@ -26,7 +26,7 @@ const LoginScreen = (props) => {
       })
       )
       .then((response) =>{
-        console.log(response.data);
+        console.log(response);
         setIsSubmit(false);
       })
       .catch((err)=>{
@@ -39,9 +39,9 @@ const LoginScreen = (props) => {
   const [hidden, setHidden] = useState(false);
 
 //La fonction goToEntraineur sert à passer à l'Ecran EntrâineurScreen
-  const goToEntraineur = () => {
+  const goToEntraineur = () => 
     props.navigation.push('EntraineurInterface');
-  }
+  
 //La fonction constante goToJoueur sert à passer à l'Ecran JoueurScreen
   const goToJoueur = () => {
     props.navigation.push('JoueurInterface');
