@@ -13,13 +13,9 @@ const LoginScreen = (props) => {
   const [nom, setNom] = useState("");
   const [password, setPassword] = useState("");
 
-  const [isSubmit, setIsSubmit] = useState(false);
-
- 
-
-  useEffect(()=>{
     const authenticate = async() => {
-      axios.post("http://192.168.43.171:8080/SmartCage/php/config.php",
+  
+      axios.post("http://192.168.43.171:8080/SERVEURWEB_SMARTCAGE/php/connexion-verif_massi.php",
       JSON.stringify({
         nom: nom,
         password: password,
@@ -27,16 +23,21 @@ const LoginScreen = (props) => {
       )
       .then((response) =>{
         console.log(response);
-        setIsSubmit(false);
       })
       .catch((err)=>{
         console.log(err);
       });
     };
-    if (isSubmit) authenticate();
-  },[isSubmit])
+    const verif= () =>{
+      if(authenticate().nom == setNom && authenticate().password == setPassword){
+        login = true;
+      }
+  
+      if (login = true) {props.navigation.push("JoueurInterface");}
+      else{ Alert = "Rééssayer";}
+    }
+ 
 
-  const [hidden, setHidden] = useState(false);
 
 //La fonction goToEntraineur sert à passer à l'Ecran EntrâineurScreen
   const goToEntraineur = () => 
@@ -73,7 +74,7 @@ const LoginScreen = (props) => {
 
     <View>
     <TouchableOpacity style={styles.BoutonConnexion} 
-    onPress={() => setIsSubmit(true)}>
+    onPress={verif}>
         <Text style = {styles.BoutonText}>Connexion</Text>
         </TouchableOpacity>
     </View>
