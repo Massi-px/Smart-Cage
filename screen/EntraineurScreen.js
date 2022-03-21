@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Alert, ImageBackground, Image} from 'react-native';
 
+
 const EntraineurScreen = (props) => {
   return(
   <SafeAreaView style={styles.container}>
