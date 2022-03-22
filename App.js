@@ -1,38 +1,42 @@
 import 'react-native-gesture-handler'
-import { StatusBar } from 'expo-status-bar';
-import * as react from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createAppContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import LoginScreen from './screen/NewLoginScreen';
+import LoginScreen from './screen/LoginScreen';
 import InscriptionScreen from './screen/InscriptionScreen';
 import JoueurScreen from './screen/JoueurScreen';
 import EntraineurScreen from './screen/EntraineurScreen';
 import JoueurParametreScreen from './screen/JoueurParametreScreen';
 import JoueurProgressionScreen from './screen/JoueurProgressionScreen';
-import { Dimensions } from 'react-native';
 import {useFonts} from 'expo-font'
-import { DrawerContent } from './constants/DrawerContent';
-
 /* création des objets permettant de contenir les naviguateurs*/
 const Naviguer = createNativeStackNavigator();
 
-const Drawer = createDrawerNavigator();
+const DrawerJoueur = createDrawerNavigator();
+const DrawerEntraineur = createDrawerNavigator();
 /*  Fonction permettant de modifier le naviguateur drawer 
 
 drawerContent={props=><DrawerContent {... props}/>} */
 
-/* Fonction créant le menu de navigation drawer avec ses écrans*/
-function MenuDrawer(){
+/* Fonction créant le menu de navigation drawer avec ses écrans pour les joueurs*/
+function MenuDrawerJoueur(){
   return(
-    <Drawer.Navigator initialRouteName='Accueil' screenOptions={{headerShown: false}}>
-      <Drawer.Screen name='Accueil' component={JoueurScreen}/>
-      <Drawer.Screen name='Progression' component={JoueurProgressionScreen}/>
-    </Drawer.Navigator>
+    <DrawerJoueur.Navigator initialRouteName = 'Accueil' screenOptions={{headerShown: false}}>
+      <DrawerJoueur.Screen name='Accueil' component={JoueurScreen}/>
+      <DrawerJoueur.Screen name='Progression' component={JoueurProgressionScreen}/>
+    </DrawerJoueur.Navigator>
   )
 }
-//Fin fonction Menudrawer
+//Fin fonction MenuDrawerJoueur
+
+function MenuDrawerEntraineur(){
+  return(
+    <DrawerEntraineur.Navigator initialRouteName='Accueil' screenOptions={{headerShown: false}}>
+      <DrawerEntraineur.Screen name='Accueil' component={EntraineurScreen}/>
+    </DrawerEntraineur.Navigator>
+  )
+}
+
 
 /*Application mobile :*/
 export default function App() {
@@ -56,8 +60,8 @@ if (!loaded) {
    <NavigationContainer>
      <Naviguer.Navigator screenOptions={{headerShown: false}} initialRouteName= "Login">
        <Naviguer.Screen name = "Login" component={LoginScreen}/>
-       <Naviguer.Screen name = "JoueurInterface" component={MenuDrawer}/>
-       <Naviguer.Screen name = "EntraineurInterface" component={EntraineurScreen}/>
+       <Naviguer.Screen name = "JoueurInterface" component={MenuDrawerJoueur}/>
+       <Naviguer.Screen name = "EntraineurInterface" component={MenuDrawerEntraineur}/>
        <Naviguer.Screen name = "Inscription" component={InscriptionScreen}/>
        <Naviguer.Screen name = "JoueurParametre" component={JoueurParametreScreen}/>
        <Naviguer.Screen name = "JoueuProgression" component={JoueurProgressionScreen}/>
