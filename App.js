@@ -1,12 +1,11 @@
 import 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar';
-import * as React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Alert, TextInput, Image} from 'react-native';
+import * as react from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createAppContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import LoginScreen from './screen/LoginScreen';
+import LoginScreen from './screen/NewLoginScreen';
 import InscriptionScreen from './screen/InscriptionScreen';
 import JoueurScreen from './screen/JoueurScreen';
 import EntraineurScreen from './screen/EntraineurScreen';
