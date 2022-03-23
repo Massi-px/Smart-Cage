@@ -28,12 +28,13 @@ export default class LoginScreen extends Component {
 
             })
           })
-
           .then((Response) => Response.json())
-
           .then((ResponseJson)=>{
-              if(ResponseJson == "ok"){
+              if(ResponseJson == "entraineur"){
                 this.props.navigation.navigate('EntraineurInterface');
+              }
+              else if(ResponseJson == "joueur"){
+                this.props.navigation.navigate('JoueurInterface');
               }
               else{
                 alert("Je rentre pas dans la boucle");
