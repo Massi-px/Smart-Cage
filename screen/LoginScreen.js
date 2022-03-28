@@ -45,7 +45,7 @@ export default class LoginScreen extends Component {
               console.error(error);
           })
       }
-    
+    /* Rendu de l'écran */
     render(){
     return(
     <SafeAreaView style={styles.container}>
