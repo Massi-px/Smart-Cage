@@ -37,7 +37,7 @@ export default class LoginScreen extends Component {
                 this.props.navigation.navigate('JoueurInterface');
               }
               else{
-                alert("Je rentre pas dans la boucle");
+                alert("Reessayer");
                 console.log(ResponseJson);
               }
           })
