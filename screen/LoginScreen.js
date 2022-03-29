@@ -16,7 +16,7 @@ export default class LoginScreen extends Component {
       //ReqûeteSql 
       login = () => {
           const {username,userPassword} = this.state;
-          fetch('http://192.168.43.171:8080/SERVEURWEB_SMARTCAGE/php/connexion-verif_massi.php',{
+          fetch('http://192.168.43.171:8080/SERVEURWEB_SMARTCAGE/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -37,7 +37,7 @@ export default class LoginScreen extends Component {
                 this.props.navigation.navigate('JoueurInterface');
               }
               else{
-                alert("Je rentre pas dans la boucle");
+                alert("reessayer");
                 console.log(ResponseJson);
               }
           })
