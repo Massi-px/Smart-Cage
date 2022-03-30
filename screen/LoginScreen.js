@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, T
 
 
 export default class LoginScreen extends Component {
-  
+
     constructor(props) {
         super(props);
         this.state = {

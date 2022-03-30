@@ -5,14 +5,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import JoueurParametreScreen from './JoueurParametreScreen';
 import JoueurProgressionScreen from './JoueurProgressionScreen';
+import { textDecorationColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default class JoueurScreen extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      username : '',
-      userPassword : '',
+      
     };
   }
 
@@ -24,7 +24,31 @@ export default class JoueurScreen extends Component {
     this.props.navigation.openDrawer();
   }
 
+  getName=()=>{
+    const{username} = this.state;
+    fetch('http://192.168.43.171:8080/SERVEURWEB_SMARTCAGE/php/mobile_api/accueil_joueur_api.php',{
+            method:'POST',
+            header:{
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body:JSON.stringify({
+                nom: username,
+            })
+          })
+          .then((Response) => Response.json())
+          .then((ResponseJson)=>{
+            username = ResponseJson;
+            console.log(ResponseJson);
+          })
+          .catch((error)=>{
+            console.error(error);
+        })
+          
+  }
+
   render(){
+    const{username} = this.state;
     return(
   <SafeAreaView style={styles.container}>
 
@@ -45,6 +69,9 @@ export default class JoueurScreen extends Component {
         </View>
     </View>
     <View style={styles.pageContenu}>
+    <View style={styles.BlockTextNom}>
+      <Text>{username}</Text>
+    </View>
     </View>
   </SafeAreaView>
   );
@@ -90,6 +117,11 @@ const styles = StyleSheet.create({
     width:'100%',
     height:'100%',
     borderRadius:40,
+  },
+
+  BlockTextNom:{
+    alignItems:'center',
+    padding:10,
   },
 
 })
