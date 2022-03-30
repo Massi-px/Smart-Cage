@@ -1,23 +1,32 @@
-import * as React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-const EntraineurScreen = (props) => {
+export default class EntraineurScreen extends Component {
   
-  const goToJoueurParametre = () => {
-    props.navigation.push('JoueurParametre');
-  }
-  
-  const openMenu = () => {
-    props.navigation.openDrawer();
+  constructor(props) {
+    super(props);
+    this.state = {
+      username : '',
+      userPassword : '',
+    };
   }
 
-  return(
+  goToJoueurParametre = () => {
+    this.props.navigation.push('JoueurParametre');
+  }
+  
+  openMenu = () => {
+    this.props.navigation.openDrawer();
+  }
+
+  render(){
+    return(
   <SafeAreaView style={styles.container}>
 
     <View style = {styles.Header}>
         <View style={styles.BlockHamburgerMenu}>
-          <TouchableOpacity onPress={openMenu}>
+          <TouchableOpacity onPress={this.openMenu}>
             <FontAwesome5 name="bars" size={24} color='lightgrey' />
             
           </TouchableOpacity>
@@ -26,7 +35,7 @@ const EntraineurScreen = (props) => {
           <Text style = {styles.TextAccueil}>Accueil</Text>
         </View>
         <View style={styles.parametre}>
-          <TouchableOpacity onPress={goToJoueurParametre}>
+          <TouchableOpacity onPress={this.goToJoueurParametre}>
           <Image source={require('../assets/image/settingslogo.png')}/>
           </TouchableOpacity>
         </View>
@@ -34,7 +43,8 @@ const EntraineurScreen = (props) => {
     <View style={styles.pageContenu}>
     </View>
   </SafeAreaView>
-  );
+    )
+  };
 };
 
 //Fonction styles contenur le design en CSS
@@ -79,5 +89,3 @@ const styles = StyleSheet.create({
   },
 
 })
-
-export default EntraineurScreen;
