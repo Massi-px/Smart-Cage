@@ -37,7 +37,11 @@ export default class LoginScreen extends Component {
                 this.props.navigation.navigate('JoueurInterface');
               }
               else{
+<<<<<<< HEAD
                 alert("reessayer");
+=======
+                alert("Reessayer");
+>>>>>>> 5ab82b718e8d6f537f1f579dbcafab8c56681d4f
                 console.log(ResponseJson);
               }
           })
@@ -45,7 +49,7 @@ export default class LoginScreen extends Component {
               console.error(error);
           })
       }
-    
+    /* Rendu de l'écran */
     render(){
     return(
     <SafeAreaView style={styles.container}>
