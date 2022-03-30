@@ -6,17 +6,25 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import JoueurParametreScreen from './JoueurParametreScreen';
 import JoueurProgressionScreen from './JoueurProgressionScreen';
 
-const JoueurScreen = (props) => {
+export default class JoueurScreen extends Component {
 
-  const goToJoueurParametre = () => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username : '',
+      userPassword : '',
+    };
+  }
+  goToJoueurParametre = () => {
     props.navigation.push('JoueurParametre');
   }
   
-  const openMenu = () => {
+  openMenu = () => {
     props.navigation.openDrawer();
   }
 
-  return(
+  render(){
+    return(
   <SafeAreaView style={styles.container}>
 
     <View style = {styles.Header}>
@@ -40,6 +48,7 @@ const JoueurScreen = (props) => {
   </SafeAreaView>
   );
 };
+}
 
 //Fonction styles contenur le design en CSS
 const styles = StyleSheet.create({
@@ -83,5 +92,3 @@ const styles = StyleSheet.create({
   },
 
 })
-
-export default JoueurScreen;
