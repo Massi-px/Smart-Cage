@@ -1,11 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import JoueurParametreScreen from './JoueurParametreScreen';
-import JoueurProgressionScreen from './JoueurProgressionScreen';
-import { textDecorationColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import LoginScreen from './LoginScreen';
 
 export default class JoueurScreen extends Component {
 
@@ -24,9 +20,10 @@ export default class JoueurScreen extends Component {
     this.props.navigation.openDrawer();
   }
 
-  getName=()=>{
+ /* getName=()=>{
+
     const{username} = this.state;
-    fetch('http://192.168.43.171:8080/SERVEURWEB_SMARTCAGE/php/mobile_api/accueil_joueur_api.php',{
+    fetch('http://192.168.110.4:8080/SERVEURWEB_SMARTCAGE/php/mobile_api/accueil_joueur_api.php',{
             method:'POST',
             header:{
                 'Accept': 'application/json',
@@ -45,6 +42,11 @@ export default class JoueurScreen extends Component {
             console.error(error);
         })
           
+  }
+*/
+  
+  getName2=()=>{
+    test = new LoginScreen().getName;
   }
 
   render(){
@@ -70,7 +72,7 @@ export default class JoueurScreen extends Component {
     </View>
     <View style={styles.pageContenu}>
     <View style={styles.blockTextProfil}>
-      <Text style={styles.textNom}>Nom</Text>
+      <Text style={styles.textNom}>{this.getName2}</Text>
       <Text style={styles.textPrenom}>Prenom</Text>
       <Text style={styles.textCategorie}>Categorie</Text>
 
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     fontFamily: 'SFBold',
     fontSize:25,
   },
-  
+
   textCategorie:{
     paddingTop:10,
     fontFamily: 'SFBold',
