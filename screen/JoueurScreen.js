@@ -12,7 +12,7 @@ export default class JoueurScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      username : '',
     };
   }
 
