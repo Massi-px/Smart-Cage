@@ -44,6 +44,7 @@ export default function App() {
 const[loaded] = useFonts({
   SFLight: require('./assets/fonts/SF-Pro-Text-Light.otf'),
   SFMedium: require('./assets/fonts/SF-Pro-Text-Medium.otf'),
+  SFBold: require('./assets/fonts/SF-Pro-Text-Bold.otf')
 });
 if (!loaded) {
   return null;

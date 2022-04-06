@@ -69,8 +69,11 @@ export default class JoueurScreen extends Component {
         </View>
     </View>
     <View style={styles.pageContenu}>
-    <View style={styles.BlockTextNom}>
-      <Text>{username}</Text>
+    <View style={styles.blockTextProfil}>
+      <Text style={styles.textNom}>Nom</Text>
+      <Text style={styles.textPrenom}>Prenom</Text>
+      <Text style={styles.textCategorie}>Categorie</Text>
+
     </View>
     </View>
   </SafeAreaView>
@@ -117,11 +120,27 @@ const styles = StyleSheet.create({
     width:'100%',
     height:'100%',
     borderRadius:40,
+    fontSize:20,
   },
 
-  BlockTextNom:{
-    alignItems:'center',
-    padding:10,
+  blockTextProfil:{
+    padding:20,
   },
 
+  textNom:{
+    fontFamily: 'SFBold',
+    fontSize:25,
+  },
+
+  textPrenom:{
+    paddingTop:10,
+    fontFamily: 'SFBold',
+    fontSize:25,
+  },
+  
+  textCategorie:{
+    paddingTop:10,
+    fontFamily: 'SFBold',
+    fontSize:25,
+  },
 })
