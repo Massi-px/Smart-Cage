@@ -16,7 +16,8 @@ export default class LoginScreen extends Component {
       //ReqûeteSql 
       login = () => {
           const {username,userPassword} = this.state;
-          fetch('http://192.168.1.26:80/SERVEURWEB_SMARTCAGE/php/mobile_api/connexion_api.php',{
+          //Le await rend la méthode fetch asynchrone
+          fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -25,15 +26,15 @@ export default class LoginScreen extends Component {
             body:JSON.stringify({
                 nom: username,
                 password: userPassword,
-
             })
           })
           .then((Response) => Response.json())
           .then((ResponseJson)=>{
-              if(ResponseJson == "entraineur"){
+              console.log(ResponseJson);
+              if(ResponseJson.type == "entraineur"){
                 this.props.navigation.navigate('EntraineurInterface');
               }
-              else if(ResponseJson == "joueur"){
+              else if(ResponseJson.type == "joueur"){
                 this.props.navigation.navigate('JoueurInterface');
               }
               else{

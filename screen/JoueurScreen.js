@@ -19,7 +19,7 @@ export default class JoueurScreen extends Component {
   openMenu = () => {
     this.props.navigation.openDrawer();
   }
-
+/*
   getInformation = () => {
     const {nom} = this.state;
     fetch('http://192.168.200.128:80/php/mobile_api/accueil_joueur_api.php',{
@@ -43,7 +43,7 @@ export default class JoueurScreen extends Component {
             console.error(error);
         })
   }
-
+*/
 
 
   render() {
@@ -69,7 +69,7 @@ export default class JoueurScreen extends Component {
     </View>
     <View style={styles.pageContenu}>
     <View style={styles.blockTextProfil}>
-      <Text style={styles.textNom}>{this.getInformation}</Text>
+      <Text style={styles.textNom}>Nom</Text>
       <Text style={styles.textPrenom}>Prenom</Text>
       <Text style={styles.textCategorie}>Categorie</Text>
 
