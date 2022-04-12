@@ -46,13 +46,6 @@ export default class LoginScreen extends Component {
           })
       }
 
-      getName= () =>{ 
-        const {username} = this.state;
-        return(
-          username
-        )
-      }
-
     /* Rendu de l'écran */
     render(){
     return(

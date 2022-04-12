@@ -4,11 +4,11 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import LoginScreen from './LoginScreen';
 
 export default class JoueurScreen extends Component {
-
+  
   constructor(props) {
     super(props);
     this.state = {
-      username : '',
+      nom : '',
     };
   }
 
@@ -20,37 +20,34 @@ export default class JoueurScreen extends Component {
     this.props.navigation.openDrawer();
   }
 
- /* getName=()=>{
-
-    const{username} = this.state;
-    fetch('http://192.168.110.4:8080/SERVEURWEB_SMARTCAGE/php/mobile_api/accueil_joueur_api.php',{
-            method:'POST',
+  getInformation = () => {
+    const {nom} = this.state;
+    fetch('http://192.168.200.128:80/php/mobile_api/accueil_joueur_api.php',{
+            method:'GET',
             header:{
                 'Accept': 'application/json',
                 'Content-type': 'application/json'
             },
             body:JSON.stringify({
-                nom: username,
+                nom
             })
           })
           .then((Response) => Response.json())
           .then((ResponseJson)=>{
-            username = ResponseJson;
-            console.log(ResponseJson);
+            if (ResponseJson!= ""){
+              return(ResponseJson);
+            }
           })
+
           .catch((error)=>{
             console.error(error);
         })
-          
-  }
-*/
-  
-  getName2=()=>{
-    test = new LoginScreen().getName;
   }
 
-  render(){
-    const{username} = this.state;
+
+
+  render() {
+    const {goBack} = this.props.navigation;
     return(
   <SafeAreaView style={styles.container}>
 
@@ -72,7 +69,7 @@ export default class JoueurScreen extends Component {
     </View>
     <View style={styles.pageContenu}>
     <View style={styles.blockTextProfil}>
-      <Text style={styles.textNom}>{this.getName2}</Text>
+      <Text style={styles.textNom}>{this.getInformation}</Text>
       <Text style={styles.textPrenom}>Prenom</Text>
       <Text style={styles.textCategorie}>Categorie</Text>
 
