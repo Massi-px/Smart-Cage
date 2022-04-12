@@ -14,10 +14,10 @@ export default class LoginScreen extends Component {
         };
       }
       //ReqûeteSql 
-      login = () => {
+      login = async() => {
           const {username,userPassword} = this.state;
           //Le await rend la méthode fetch asynchrone
-          fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
+          await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
