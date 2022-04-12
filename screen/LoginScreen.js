@@ -16,7 +16,7 @@ export default class LoginScreen extends Component {
       //ReqûeteSql 
       login = () => {
           const {username,userPassword} = this.state;
-          fetch('http://192.168.110.4:8080/SERVEURWEB_SMARTCAGE/php/mobile_api/connexion_api.php',{
+          fetch('http://192.168.200.128:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -44,13 +44,6 @@ export default class LoginScreen extends Component {
           .catch((error)=>{
               console.error(error);
           })
-      }
-
-      getName= () =>{ 
-        const {username} = this.state;
-        return(
-          username
-        )
       }
 
     /* Rendu de l'écran */

@@ -9,6 +9,8 @@ import EntraineurScreen from './screen/EntraineurScreen';
 import JoueurParametreScreen from './screen/JoueurParametreScreen';
 import JoueurProgressionScreen from './screen/JoueurProgressionScreen';
 import {useFonts} from 'expo-font'
+import CustomDrawer from './components/CustomDrawer';
+
 /* création des objets permettant de contenir les naviguateurs*/
 const Naviguer = createNativeStackNavigator();
 
@@ -21,7 +23,9 @@ drawerContent={props=><DrawerContent {... props}/>} */
 /* Fonction créant le menu de navigation drawer avec ses écrans pour les joueurs*/
 function MenuDrawerJoueur(){
   return(
-    <DrawerJoueur.Navigator initialRouteName = 'Accueil' screenOptions={{headerShown: false}}>
+    <DrawerJoueur.Navigator drawerContent={props=> <CustomDrawer {... props}/>} 
+    initialRouteName = 'Accueil' 
+    screenOptions={{headerShown: false, drawerLabelStyle: {fontFamily:'SFBold', fontSize:15}}}>
       <DrawerJoueur.Screen name='Accueil' component={JoueurScreen}/>
       <DrawerJoueur.Screen name='Progression' component={JoueurProgressionScreen}/>
     </DrawerJoueur.Navigator>
@@ -31,7 +35,10 @@ function MenuDrawerJoueur(){
 
 function MenuDrawerEntraineur(){
   return(
-    <DrawerEntraineur.Navigator initialRouteName='Accueil' screenOptions={{headerShown: false}}>
+    <DrawerEntraineur.Navigator 
+    drawerContent={props=> <CustomDrawer {... props}/>} 
+    initialRouteName='Accueil' 
+    screenOptions={{headerShown: false}}>
       <DrawerEntraineur.Screen name='Accueil' component={EntraineurScreen}/>
     </DrawerEntraineur.Navigator>
   )
