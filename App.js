@@ -16,6 +16,8 @@ const Naviguer = createNativeStackNavigator();
 
 const DrawerJoueur = createDrawerNavigator();
 const DrawerEntraineur = createDrawerNavigator();
+
+
 /*  Fonction permettant de modifier le naviguateur drawer 
 
 drawerContent={props=><DrawerContent {... props}/>} */

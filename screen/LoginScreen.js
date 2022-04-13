@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, T
 
 /*Création de l'ecran LoginScreen qui consistera à logger/identifier les tulisateurs */
 
+var info;
 
 export default class LoginScreen extends Component {
 
@@ -13,11 +14,12 @@ export default class LoginScreen extends Component {
           userPassword : '',
         };
       }
+
       //ReqûeteSql 
       login = async() => {
           const {username,userPassword} = this.state;
           //Le await rend la méthode fetch asynchrone
-          await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
+          await fetch('http://192.168.200.128:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -30,6 +32,7 @@ export default class LoginScreen extends Component {
           })
           .then((Response) => Response.json())
           .then((ResponseJson)=>{
+              info = ResponseJson;
               console.log(ResponseJson);
               if(ResponseJson.type == "entraineur"){
                 this.props.navigation.navigate('EntraineurInterface');
