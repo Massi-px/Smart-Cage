@@ -19,7 +19,7 @@ export default class LoginScreen extends Component {
       login = async() => {
           const {username,userPassword} = this.state;
           //Le await rend la méthode fetch asynchrone
-          await fetch('http://192.168.200.128:80/php/mobile_api/connexion_api.php',{
+          await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',

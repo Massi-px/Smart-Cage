@@ -43,7 +43,7 @@ export default class JoueurScreen extends Component {
     </View>
     <View style={styles.pageContenu}>
     <View style={styles.blockTextProfil}>
-      <Text style={styles.textNom}>{this.getNom()}</Text>
+      <Text style={styles.textNom}>Nom</Text>
       <Text style={styles.textPrenom}>Prenom</Text>
       <Text style={styles.textCategorie}>Categorie</Text>
 
