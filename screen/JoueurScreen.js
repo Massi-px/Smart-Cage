@@ -3,13 +3,11 @@ import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackgrou
 import { FontAwesome5 } from '@expo/vector-icons';
 import LoginScreen from './LoginScreen';
 
+
 export default class JoueurScreen extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      nom : '',
-    };
   }
 
   goToJoueurParametre = () => {

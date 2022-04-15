@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput, StatusBar} from 'react-native';
+import getNativeComponentAttributes from 'react-native/Libraries/ReactNative/getNativeComponentAttributes';
+import Login from '../class/CLogin';
 
 /*Création de l'ecran LoginScreen qui consistera à logger/identifier les tulisateurs */
 
-var info;
+var userConnexion = new Login(); 
 
 export default class LoginScreen extends Component {
 
@@ -13,41 +15,6 @@ export default class LoginScreen extends Component {
           username : '',
           userPassword : '',
         };
-      }
-
-      //ReqûeteSql 
-      login = async() => {
-          const {username,userPassword} = this.state;
-          //Le await rend la méthode fetch asynchrone
-          await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
-            method:'post',
-            header:{
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            },
-            body:JSON.stringify({
-                nom: username,
-                password: userPassword,
-            })
-          })
-          .then((Response) => Response.json())
-          .then((ResponseJson)=>{
-              info = ResponseJson;
-              console.log(ResponseJson);
-              if(ResponseJson.type == "entraineur"){
-                this.props.navigation.navigate('EntraineurInterface');
-              }
-              else if(ResponseJson.type == "joueur"){
-                this.props.navigation.navigate('JoueurInterface');
-              }
-              else{
-                alert("Reessayer");
-                console.log(ResponseJson);
-              }
-          })
-          .catch((error)=>{
-              console.error(error);
-          })
       }
 
     /* Rendu de l'écran */
@@ -78,13 +45,33 @@ export default class LoginScreen extends Component {
   
       <View>
       <TouchableOpacity style={styles.BoutonConnexion} 
-      onPress={this.login}>
+      onPress={this.connexion}>
           <Text style = {styles.BoutonText}>Connexion</Text>
           </TouchableOpacity>
       </View>
     </SafeAreaView>   
     );
   };
+
+  connexion = async() => {
+    await userConnexion.login(this.state.username, this.state.userPassword);
+
+   var userInformation = userConnexion.getInformationJoueur();
+
+
+    if(userInformation.type == "entraineur"){
+      this.props.navigation.navigate('EntraineurInterface');
+    }
+    else if(userInformation.type == "joueur"){
+      this.props.navigation.navigate('JoueurInterface');
+    }
+    else{
+      alert("Reessayer");
+      console.log(userType);
+    }
+
+  }
+ 
 }
   /*Fin Ecran LoginScreen */
   
