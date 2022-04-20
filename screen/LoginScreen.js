@@ -1,20 +1,41 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput, StatusBar} from 'react-native';
-import getNativeComponentAttributes from 'react-native/Libraries/ReactNative/getNativeComponentAttributes';
 import Login from '../class/CLogin';
 
 /*Création de l'ecran LoginScreen qui consistera à logger/identifier les tulisateurs */
 
-var userConnexion = new Login(); 
+var ConnexionUser = Login.getInstance();
 
 export default class LoginScreen extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
           username : '',
           userPassword : '',
         };
+      }
+
+//fonction pour se connecter à ma bdd
+      connexion = async() => {
+        await ConnexionUser.login(this.state.username, this.state.userPassword);
+        
+    
+       var userInformation = ConnexionUser.getInformationJoueur();
+    
+    
+        if(userInformation.type == "entraineur"){
+          this.props.navigation.navigate('EntraineurInterface');
+        }
+
+        else if(userInformation.type == "joueur"){
+          this.props.navigation.navigate('JoueurInterface');
+        }
+
+        else{
+          alert("Reessayer");
+          console.log(userType);
+        }
+
       }
 
     /* Rendu de l'écran */
@@ -52,25 +73,6 @@ export default class LoginScreen extends Component {
     </SafeAreaView>   
     );
   };
-
-  connexion = async() => {
-    await userConnexion.login(this.state.username, this.state.userPassword);
-
-   var userInformation = userConnexion.getInformationJoueur();
-
-
-    if(userInformation.type == "entraineur"){
-      this.props.navigation.navigate('EntraineurInterface');
-    }
-    else if(userInformation.type == "joueur"){
-      this.props.navigation.navigate('JoueurInterface');
-    }
-    else{
-      alert("Reessayer");
-      console.log(userType);
-    }
-
-  }
  
 }
   /*Fin Ecran LoginScreen */
