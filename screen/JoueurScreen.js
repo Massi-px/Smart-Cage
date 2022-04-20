@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import LoginScreen from './LoginScreen';
+import Login from '../class/CLogin';
 
+
+var ConnexionUser = Login.getInstance();
+var information = ConnexionUser.getInformationJoueur();
 
 export default class JoueurScreen extends Component {
   
@@ -10,16 +13,15 @@ export default class JoueurScreen extends Component {
     super(props);
   }
 
-  goToJoueurParametre = () => {
-    this.props.navigation.push('JoueurParametre');
-  }
-  
-  openMenu = () => {
-    this.props.navigation.openDrawer();
-  }
+  getNom = () =>{return(information.nom)}
 
-  render() {
+  goToJoueurParametre = () => {this.props.navigation.push('JoueurParametre');}
+  
+  openMenu = () => {this.props.navigation.openDrawer();}
+
+  render = () =>{
     const {goBack} = this.props.navigation;
+
     return(
   <SafeAreaView style={styles.container}>
 
@@ -41,7 +43,7 @@ export default class JoueurScreen extends Component {
     </View>
     <View style={styles.pageContenu}>
     <View style={styles.blockTextProfil}>
-      <Text style={styles.textNom}>Nom</Text>
+      <Text style={styles.textNom}>{this.getNom()}</Text>
       <Text style={styles.textPrenom}>Prenom</Text>
       <Text style={styles.textCategorie}>Categorie</Text>
 
