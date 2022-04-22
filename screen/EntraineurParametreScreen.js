@@ -5,7 +5,7 @@ const EntraineurParametreScreen = (props) => {
   return(
   <SafeAreaView style={styles.container}>
     <View>
-        <Text>Joueur Parametre Screen</Text>
+        <Text>Entraineur Parametre Screen</Text>
     </View>
   </SafeAreaView>
   );

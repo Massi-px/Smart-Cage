@@ -9,8 +9,8 @@ export default class EntraineurScreen extends Component {
     super(props);
   }
 
-  goToJoueurParametre = () => {
-    this.props.navigation.push('JoueurParametre');
+  goToEntraineurParametre = () => {
+    this.props.navigation.push('EntraineurParametre');
   }
   
   openMenu = () => {
@@ -50,7 +50,7 @@ export default class EntraineurScreen extends Component {
           <Text style = {styles.TextAccueil}>Accueil</Text>
         </View>
         <View style={styles.parametre}>
-          <TouchableOpacity onPress={this.goToJoueurParametre}>
+          <TouchableOpacity onPress={this.goToEntraineurParametre}>
           <Image source={require('../assets/image/settingslogo.png')}/>
           </TouchableOpacity>
         </View>
