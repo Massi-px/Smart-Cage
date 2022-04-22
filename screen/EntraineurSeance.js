@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity, DatePickerAndroid} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { LogBox } from "react-native";
 
 export default class EntraineurSeanceScreen extends Component{
 
@@ -15,7 +16,26 @@ export default class EntraineurSeanceScreen extends Component{
       }
 
     openMenu = () => {this.props.navigation.openDrawer();}
+    
+    async openAndroidDatePicker() {
+        try {
+          const {action, year, month, day} = await DatePickerAndroid.open({
+            date: new Date()
+          });
+        } catch ({code, message}) {
+          console.warn('Cannot open date picker', message);
+        }
+      }
+  
 
+created() {
+    LogBox.ignoreLogs([
+      'DatePickerIOS has been merged with DatePickerAndroid and will be removed in a future release.',
+      'StatusBarIOS has been merged with StatusBar and will be removed in a future release.',
+      'DatePickerAndroid has been merged with DatePickerIOS and will be removed in a future release.'
+    ]);
+    
+  }
   render = () =>{
   return(
   <SafeAreaView style={styles.container}>
@@ -34,6 +54,9 @@ export default class EntraineurSeanceScreen extends Component{
         <View style={styles.blockCreationSeance}>
             <Text style={styles.textCreationSeance}>Nom de l'entraineur :</Text>
             <Text style={styles.textCreationSeance}>Date de la séance : </Text>
+            <TouchableOpacity onPress={this.openAndroidDatePicker}>
+                <Text>Sélection de la date</Text>
+            </TouchableOpacity>
             <Text style={styles.textCreationSeance}>Categorie : </Text>
             <Text style={styles.textCreationSeance}>Zone de tir : </Text>
         </View>
