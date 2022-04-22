@@ -24,7 +24,6 @@ export default class EntraineurSeanceScreen extends Component{
         <View style={styles.BlockHamburgerMenu}>
           <TouchableOpacity onPress={this.openMenu}>
             <FontAwesome5 name="bars" size={24} color='lightgrey' />
-            
           </TouchableOpacity>
         </View>
         <View style = {styles.BlockTextAccueil}>
@@ -32,6 +31,12 @@ export default class EntraineurSeanceScreen extends Component{
         </View>
     </View>
     <View style={styles.pageContenu}>
+        <View style={styles.blockCreationSeance}>
+            <Text style={styles.textCreationSeance}>Nom de l'entraineur :</Text>
+            <Text style={styles.textCreationSeance}>Date de la séance : </Text>
+            <Text style={styles.textCreationSeance}>Categorie : </Text>
+            <Text style={styles.textCreationSeance}>Zone de tir : </Text>
+        </View>
     </View>
   </SafeAreaView>
   );
@@ -74,5 +79,11 @@ const styles = StyleSheet.create({
     height:'100%',
     borderRadius:40,
   },
-
+  blockCreationSeance:{
+    padding:20,
+  },
+  textCreationSeance:{
+    fontFamily: 'SFBold',
+    fontSize:20,
+  },
 })

@@ -48,7 +48,7 @@ export default class LoginScreen extends Component {
         />
       </View>
       <View style={styles.usernameBlock}>
-        <TextInput style={styles.usernameText}
+        <TextInput style={styles.loginText}
         placeholder="Nom d'utilisateur"
         autoCapitalize='none'
         onChangeText={username => this.setState({username})}
@@ -56,7 +56,7 @@ export default class LoginScreen extends Component {
       </View>
   
       <View style={styles.passwordBlock}>
-        <TextInput style={styles.passwordText} 
+        <TextInput style={styles.loginText} 
         placeholder="Mot de passe" 
         secureTextEntry={true}
         autoCapitalize='none'
@@ -95,7 +95,7 @@ export default class LoginScreen extends Component {
       justifyContent:'center'
     },
   
-    usernameText: {
+    loginText: {
       padding:10,
       justifyContent:'center',
       width:200,
@@ -109,18 +109,6 @@ export default class LoginScreen extends Component {
   
     passwordBlock: {
       top:20,
-    },
-  
-    passwordText: {
-      fontFamily: 'SFMedium',
-      padding:10,
-      justifyContent:'center',
-      width:200,
-      height:50,
-      fontSize:20,
-      borderRadius:20,
-      backgroundColor:"#FFF",
-      textAlign:'center'
     },
   
     BoutonConnexion: {
