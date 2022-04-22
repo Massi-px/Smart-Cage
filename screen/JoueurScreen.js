@@ -4,23 +4,35 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import Login from '../class/CLogin';
 
 
-var ConnexionUser = Login.getInstance();
-var information = ConnexionUser.getInformationJoueur();
+
 
 export default class JoueurScreen extends Component {
   
   constructor(props) {
     super(props);
   }
-
-  getNom = () =>{return(information.nom)}
-
   goToJoueurParametre = () => {this.props.navigation.push('JoueurParametre');}
   
   openMenu = () => {this.props.navigation.openDrawer();}
 
   render = () =>{
+
     const {goBack} = this.props.navigation;
+
+    var ConnexionUser = Login.getInstance();
+    var information = ConnexionUser.getInformationJoueur();
+
+    const getNom = () =>{
+      return(information.nom)
+    }
+
+    const getPrenom = () =>{
+      return(information.prenom)
+    }
+
+    const getCategorie = ()=>{
+      return(information.categorie)
+    }
 
     return(
   <SafeAreaView style={styles.container}>
@@ -43,9 +55,9 @@ export default class JoueurScreen extends Component {
     </View>
     <View style={styles.pageContenu}>
     <View style={styles.blockTextProfil}>
-      <Text style={styles.textNom}>{this.getNom()}</Text>
-      <Text style={styles.textPrenom}>Prenom</Text>
-      <Text style={styles.textCategorie}>Categorie</Text>
+      <Text style={styles.textNom}>{getNom()}</Text>
+      <Text style={styles.textPrenom}>{getPrenom()}</Text>
+      <Text style={styles.textCategorie}>{getCategorie()}</Text>
 
     </View>
     </View>

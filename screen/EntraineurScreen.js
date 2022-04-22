@@ -1,15 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import Login from '../class/CLogin';
 
 export default class EntraineurScreen extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      username : '',
-      userPassword : '',
-    };
   }
 
   goToJoueurParametre = () => {
@@ -20,7 +17,25 @@ export default class EntraineurScreen extends Component {
     this.props.navigation.openDrawer();
   }
 
-  render(){
+  render = () =>{
+
+    const {goBack} = this.props.navigation;
+
+    var ConnexionUser = Login.getInstance();
+    var information = ConnexionUser.getInformationJoueur();
+
+    const getNom = () =>{
+      return(information.nom)
+    }
+
+    const getPrenom = () =>{
+      return(information.prenom)
+    }
+
+    const getCategorie = ()=>{
+      return(information.categorie)
+    }
+
     return(
   <SafeAreaView style={styles.container}>
 
@@ -41,10 +56,15 @@ export default class EntraineurScreen extends Component {
         </View>
     </View>
     <View style={styles.pageContenu}>
+    <View style={styles.blockTextProfil}>
+      <Text style={styles.textNom}>{getNom()}</Text>
+      <Text style={styles.textPrenom}>{getPrenom()}</Text>
+
+    </View>
     </View>
   </SafeAreaView>
-    )
-  };
+  );
+ };
 };
 
 //Fonction styles contenur le design en CSS
@@ -86,6 +106,21 @@ const styles = StyleSheet.create({
     width:'100%',
     height:'100%',
     borderRadius:40,
+    fontSize:20,
   },
 
+  blockTextProfil:{
+    padding:20,
+  },
+
+  textNom:{
+    fontFamily: 'SFBold',
+    fontSize:25,
+  },
+
+  textPrenom:{
+    paddingTop:10,
+    fontFamily: 'SFBold',
+    fontSize:25,
+  },
 })

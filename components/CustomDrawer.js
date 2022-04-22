@@ -3,15 +3,27 @@ import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import Login from '../class/CLogin';
 
 const CustomDrawer=(props)=>{
+
+    var ConnexionUser = Login.getInstance();
+    var information = ConnexionUser.getInformationJoueur();
+    const getNom = () =>{
+        return(information.nom)
+      }
+
+      const getType = ()=>{
+        return(information.type)
+      }
+
     return(
         <View style={styles.container}>
         <DrawerContentScrollView {...props} contentContainerStyle={{backgroundColor:"#FEF5E7"}}>
             <ImageBackground source={require('../assets/image/menu-bg.jpg')} style={styles.drawerBackGround}>
                 <Image source={require('../assets/image/user-profile.jpg')} style={styles.imageProfile}/>
-                <Text style={styles.textNom}>Nom</Text>
-                <Text style={styles.textCategorie}>Categorie</Text>
+                <Text style={styles.textNom}>{getNom()}</Text>
+                <Text style={styles.textCategorie}>{getType()}</Text>
             </ImageBackground>
             <View style={styles.listScreen}>
             <DrawerItemList {...props}/>
