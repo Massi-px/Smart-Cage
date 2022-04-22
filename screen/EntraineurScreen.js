@@ -56,11 +56,10 @@ export default class EntraineurScreen extends Component {
         </View>
     </View>
     <View style={styles.pageContenu}>
-    <View style={styles.blockTextProfil}>
-      <Text style={styles.textNom}>{getNom()}</Text>
-      <Text style={styles.textPrenom}>{getPrenom()}</Text>
-
-    </View>
+      <View style={styles.blockTextProfil}>
+        <Text style={styles.textNom}>{getNom()}</Text>
+        <Text style={styles.textPrenom}>{getPrenom()}</Text>
+      </View>
     </View>
   </SafeAreaView>
   );

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import JoueurParametreScreen from './JoueurParametreScreen';
 
 const JoueurProgressionScreen = (props) => {
 

@@ -3,9 +3,6 @@ import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackgrou
 import { FontAwesome5 } from '@expo/vector-icons';
 import Login from '../class/CLogin';
 
-
-
-
 export default class JoueurScreen extends Component {
   
   constructor(props) {
