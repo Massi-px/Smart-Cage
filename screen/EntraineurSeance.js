@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity, DatePickerAndroid} from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
+import DatePicker from "react-native-datepicker";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { LogBox } from "react-native";
 
 export default class EntraineurSeanceScreen extends Component{
@@ -16,17 +17,6 @@ export default class EntraineurSeanceScreen extends Component{
       }
 
     openMenu = () => {this.props.navigation.openDrawer();}
-    
-    async openAndroidDatePicker() {
-        try {
-          const {action, year, month, day} = await DatePickerAndroid.open({
-            date: new Date()
-          });
-        } catch ({code, message}) {
-          console.warn('Cannot open date picker', message);
-        }
-      }
-  
 
 created() {
     LogBox.ignoreLogs([
@@ -52,11 +42,30 @@ created() {
     </View>
     <View style={styles.pageContenu}>
         <View style={styles.blockCreationSeance}>
-            <Text style={styles.textCreationSeance}>Nom de l'entraineur :</Text>
+            <Text style={styles.textCreationSeance}>Nom de l'entraineur : </Text>
             <Text style={styles.textCreationSeance}>Date de la séance : </Text>
-            <TouchableOpacity onPress={this.openAndroidDatePicker}>
-                <Text>Sélection de la date</Text>
-            </TouchableOpacity>
+            <DatePicker
+        style={{width: 200}}
+        date={this.state.dateSeance}
+        mode="date"
+        placeholder="select date"
+        format="YYYY-MM-DD"
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
+        customStyles={{
+          dateIcon: {
+            position: 'absolute',
+            left: 0,
+            top: 4,
+            marginLeft: 0
+          },
+          dateInput: {
+            marginLeft: 36
+          }
+          // ... You can check the source to find the other keys.
+        }}
+        onDateChange={dateSeance => {this.setState({dateSeance})}}
+      />
             <Text style={styles.textCreationSeance}>Categorie : </Text>
             <Text style={styles.textCreationSeance}>Zone de tir : </Text>
         </View>
