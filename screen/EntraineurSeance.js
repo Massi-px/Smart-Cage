@@ -20,21 +20,13 @@ export default class EntraineurSeanceScreen extends Component{
 
     getNomEntraineur = async() => {
       var nomEntraineur = '';
-      await fetch('http://192.168.0.21:80/php/mobile_api/selection_entraineur.php',{
-        method:'get',
-            header:{
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            },
-            body:JSON.parse({
-              entraineur: nomEntraineur,
-          })
+      await fetch('http://192.168.0.21:80/php/mobile_api/selection_entraineur.php','ascii')
           .then((Response) => Response.json())
           .then((ResponseJson)=>{
             console.log(ResponseJson);
           })
-        })
-    }
+        }
+    
 
 created() {
     LogBox.ignoreLogs([
@@ -62,7 +54,7 @@ created() {
         <View style={styles.blockCreationSeance}>
             <Text style={styles.textCreationSeance}>Nom de l'entraineur : </Text>
             <TouchableOpacity onPress={this.getNomEntraineur}>
-            <Text>SelectionEntr</Text>
+            <Text>SelectionEntraineur</Text>
             </TouchableOpacity>
             <Text style={styles.textCreationSeance}>Date de la séance : </Text>
             <DatePicker
