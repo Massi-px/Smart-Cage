@@ -18,6 +18,24 @@ export default class EntraineurSeanceScreen extends Component{
 
     openMenu = () => {this.props.navigation.openDrawer();}
 
+    getNomEntraineur = async() => {
+      var nomEntraineur = '';
+      await fetch('http://192.168.0.21:80/php/mobile_api/selection_entraineur.php',{
+        method:'get',
+            header:{
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body:JSON.parse({
+              entraineur: nomEntraineur,
+          })
+          .then((Response) => Response.json())
+          .then((ResponseJson)=>{
+            console.log(ResponseJson);
+          })
+        })
+    }
+
 created() {
     LogBox.ignoreLogs([
       'DatePickerIOS has been merged with DatePickerAndroid and will be removed in a future release.',
@@ -43,13 +61,16 @@ created() {
     <View style={styles.pageContenu}>
         <View style={styles.blockCreationSeance}>
             <Text style={styles.textCreationSeance}>Nom de l'entraineur : </Text>
+            <TouchableOpacity onPress={this.getNomEntraineur}>
+            <Text>SelectionEntr</Text>
+            </TouchableOpacity>
             <Text style={styles.textCreationSeance}>Date de la séance : </Text>
             <DatePicker
         style={{width: 200}}
         date={this.state.dateSeance}
         mode="date"
         placeholder="select date"
-        format="YYYY-MM-DD"
+        format="DD-MM-YYYY"
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
         customStyles={{
