@@ -5,11 +5,9 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { LogBox } from "react-native";
 
 export default class EntraineurSeanceScreen extends Component{
-
     constructor(props) {
         super(props);
         this.state = {
-             nomEntraineur: '',
              dateSeance: '',
              categorie:'',
              zoneDeTir:'',
@@ -20,22 +18,30 @@ export default class EntraineurSeanceScreen extends Component{
 
     getNomEntraineur = async() => {
       var nomEntraineur = '';
-      await fetch('http://192.168.0.21:80/php/mobile_api/selection_entraineur.php','ascii')
+      await fetch('http://192.168.1.26:80/php/mobile_api/accueil_joueur_api.php',{
+        method:'post',
+        header:{
+            'Accept': 'application/json',
+            'Content-type': 'application/json'
+        },
+        body:JSON.stringify({
+            listeEntraineur: nomEntraineur,
+        })
+      })
           .then((Response) => Response.json())
           .then((ResponseJson)=>{
             console.log(ResponseJson);
           })
         }
-    
 
 created() {
     LogBox.ignoreLogs([
       'DatePickerIOS has been merged with DatePickerAndroid and will be removed in a future release.',
       'StatusBarIOS has been merged with StatusBar and will be removed in a future release.',
-      'DatePickerAndroid has been merged with DatePickerIOS and will be removed in a future release.'
-    ]);
-    
+      'DatePickerAndroid has been merged with DatePickerIOS and will be removed in a future release.',
+    ]); 
   }
+  
   render = () =>{
   return(
   <SafeAreaView style={styles.container}>
@@ -105,7 +111,7 @@ const styles = StyleSheet.create({
   },
 
   BlockHamburgerMenu:{
-    left: -80,
+    marginRight:50,
     },
 
  BlockTextAccueil: {
