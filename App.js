@@ -10,7 +10,7 @@ import JoueurParametreScreen from './screen/JoueurParametreScreen';
 import JoueurProgressionScreen from './screen/JoueurProgressionScreen';
 import EntraineurParametreScreen from './screen/EntraineurParametreScreen';
 import EntraineurProgressionScreen from './screen/EntraineurProgressionScreen';
-import EntraineurSeanceScreen from './screen/EntraineurSeance';
+import EntraineurSeanceScreen from './screen/EntraineurSeanceScreen';
 import {useFonts} from 'expo-font'
 import CustomDrawer from './components/CustomDrawer';
 
