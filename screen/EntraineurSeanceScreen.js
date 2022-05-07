@@ -41,7 +41,7 @@ created() {
       'DatePickerAndroid has been merged with DatePickerIOS and will be removed in a future release.',
     ]); 
   }
-  
+
   render = () =>{
   return(
   <SafeAreaView style={styles.container}>
