@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Login from '../class/CLogin';
 
 const CustomDrawer=(props)=>{
@@ -12,8 +10,7 @@ const CustomDrawer=(props)=>{
     const getNom = () =>{
         return(information.nom)
       }
-
-      const getType = ()=>{
+    const getType = ()=>{
         return(information.type)
       }
 
