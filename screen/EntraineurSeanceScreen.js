@@ -1,13 +1,19 @@
-import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
-import DatePicker from "react-native-datepicker";
+import React, { Component} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import DatePicker from 'react-native-datepicker';
 import { FontAwesome5 } from "@expo/vector-icons";
 import { LogBox } from "react-native";
+import style from 'react-native-datepicker/style';
+
+var listeEntraineur = '';
 
 export default class EntraineurSeanceScreen extends Component{
     constructor(props) {
         super(props);
         this.state = {
+             selectEntraineur:'',
+             entraineurSeance:'',
              dateSeance: '',
              categorie:'',
              zoneDeTir:'',
@@ -16,22 +22,24 @@ export default class EntraineurSeanceScreen extends Component{
 
     openMenu = () => {this.props.navigation.openDrawer();}
 
-    getNomEntraineur = async() => {
-      var nomEntraineur = '';
-      await fetch('http://192.168.1.26:80/php/mobile_api/accueil_joueur_api.php',{
-        method:'post',
+    getListeEntraineur = async() => {
+
+      await fetch('http://192.168.106.127:80/php/mobile_api/liste_entraineur.php',{
+        method:'get',
+        dataType: 'json',
         header:{
             'Accept': 'application/json',
             'Content-type': 'application/json'
         },
-        body:JSON.stringify({
-            listeEntraineur: nomEntraineur,
-        })
       })
           .then((Response) => Response.json())
           .then((ResponseJson)=>{
             console.log(ResponseJson);
+            listeEntraineur = ResponseJson;
           })
+          console.log(listeEntraineur[0].nom);
+          
+          return(listeEntraineur[0].nom);
         }
 
 created() {
@@ -42,7 +50,10 @@ created() {
     ]); 
   }
 
+
+
   render = () =>{
+  var nomEntraineur = this.getListeEntraineur;
   return(
   <SafeAreaView style={styles.container}>
 
@@ -58,33 +69,43 @@ created() {
     </View>
     <View style={styles.pageContenu}>
         <View style={styles.blockCreationSeance}>
+          <TouchableOpacity onPress={this.getListeEntraineur}>
+            <Text>Test</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.getNom}>
+            <Text>Test</Text>
+          </TouchableOpacity>
             <Text style={styles.textCreationSeance}>Nom de l'entraineur : </Text>
-            <TouchableOpacity onPress={this.getNomEntraineur}>
-            <Text>SelectionEntraineur</Text>
-            </TouchableOpacity>
+
+            <Picker selectedValue={this.state.selectEntraineur} onValueChange={entraineurSeance => this.setState({entraineurSeance})}>
+              
+              <Picker.Item label={nomEntraineur} style={styles.designPicker}/>
+            </Picker>
+
             <Text style={styles.textCreationSeance}>Date de la séance : </Text>
+
             <DatePicker
-        style={{width: 200}}
-        date={this.state.dateSeance}
-        mode="date"
-        placeholder="select date"
-        format="DD-MM-YYYY"
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        customStyles={{
-          dateIcon: {
-            position: 'absolute',
-            left: 0,
-            top: 4,
-            marginLeft: 0
-          },
-          dateInput: {
-            marginLeft: 36
-          }
+              style={{width: 200}}
+              date={this.state.dateSeance}
+              mode="date"
+              placeholder="selectionner la date"
+              format="DD-MM-YYYY"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              customStyles={{
+              dateIcon: {
+                position: 'absolute',
+                left: 0,
+                top: 4,
+                marginLeft: 0
+              },
+              dateInput: {
+                marginLeft: 36
+              }
           // ... You can check the source to find the other keys.
         }}
-        onDateChange={dateSeance => {this.setState({dateSeance})}}
-      />
+              onDateChange={dateSeance => {this.setState({dateSeance})}}
+              />
             <Text style={styles.textCreationSeance}>Categorie : </Text>
             <Text style={styles.textCreationSeance}>Zone de tir : </Text>
         </View>
@@ -105,13 +126,13 @@ const styles = StyleSheet.create({
   Header: {
     marginTop:30,
     marginBottom:10,
-    alignItems:'center',
     flexDirection:'row',
-    justifyContent:'center'
+    justifyContent:'center',
+    alignItems:'center'
   },
 
   BlockHamburgerMenu:{
-    marginRight:50,
+    left:-100,
     },
 
  BlockTextAccueil: {
@@ -122,7 +143,7 @@ const styles = StyleSheet.create({
     fontFamily: 'SFMedium',
     fontSize:20,
     color:'lightgrey',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   pageContenu:{
     backgroundColor:'white',
@@ -136,5 +157,11 @@ const styles = StyleSheet.create({
   textCreationSeance:{
     fontFamily: 'SFBold',
     fontSize:20,
+  },
+  designPicker:{
+    right:100,
+    width:'100%',
+    fontFamily: 'SFMedium',
+    color:'#F00'
   },
 })
