@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Alert, TouchableOpacity, Image, TextInput, StatusBar} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInput} from 'react-native';
 import Login from '../class/CLogin';
 
 /*Création de l'ecran LoginScreen qui consistera à logger/identifier les tulisateurs */
@@ -33,7 +33,7 @@ export default class LoginScreen extends Component {
 
         else{
           alert("Reessayer");
-          console.log(userType);
+          console.log(userInformation.type);
         }
 
       }
