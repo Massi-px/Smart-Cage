@@ -19,7 +19,7 @@ export default class Information extends Component {
 
       requeteListeEntraineur = async() => {
           
-        await fetch('http://192.168.106.127:80/php/mobile_api/liste_entraineur.php',{
+        await fetch('http://192.168.1.26:80/php/mobile_api/liste_entraineur.php',{
           method:'get',
           dataType: 'json',
           header:{
