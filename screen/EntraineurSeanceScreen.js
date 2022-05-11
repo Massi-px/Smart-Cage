@@ -4,44 +4,27 @@ import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-datepicker';
 import { FontAwesome5 } from "@expo/vector-icons";
 import { LogBox } from "react-native";
-import style from 'react-native-datepicker/style';
+import Seance from '../class/CSeance';
+import Information from '../class/CInformation';
 
-var listeEntraineur = '';
+var nouvelleSeance = new Seance();
+var informationListeEntraineur = Information.getInstance();
+var nomEntraineur = '';
 
 export default class EntraineurSeanceScreen extends Component{
     constructor(props) {
         super(props);
         this.state = {
-             selectEntraineur:'',
-             entraineurSeance:'',
-             dateSeance: '',
-             categorie:'',
-             zoneDeTir:'',
-          };
+          selectEntraineur:'',
+          entraineurSeance:'',
+          dateSeance: '',
+          categorie:'',
+          zoneDeTir:'',
+       };
       }
 
     openMenu = () => {this.props.navigation.openDrawer();}
-
-    getListeEntraineur = async() => {
-
-      await fetch('http://192.168.106.127:80/php/mobile_api/liste_entraineur.php',{
-        method:'get',
-        dataType: 'json',
-        header:{
-            'Accept': 'application/json',
-            'Content-type': 'application/json'
-        },
-      })
-          .then((Response) => Response.json())
-          .then((ResponseJson)=>{
-            console.log(ResponseJson);
-            listeEntraineur = ResponseJson;
-          })
-          console.log(listeEntraineur[0].nom);
-          
-          return(listeEntraineur[0].nom);
-        }
-
+    
 created() {
     LogBox.ignoreLogs([
       'DatePickerIOS has been merged with DatePickerAndroid and will be removed in a future release.',
@@ -51,9 +34,15 @@ created() {
   }
 
 
+  creationSeance = () => {
+    nouvelleSeance.creationSeance(this.state.entraineurSeance, this.state.dateSeance, this.state.categorie, this.state.zoneDeTir);
+  }
 
-  render = () =>{
-  var nomEntraineur = this.getListeEntraineur;
+
+  render(){
+    informationListeEntraineur.requeteListeEntraineur();
+    nomEntraineur = informationListeEntraineur.getListeEntraineur();
+    console.log(nomEntraineur);
   return(
   <SafeAreaView style={styles.container}>
 
@@ -69,15 +58,12 @@ created() {
     </View>
     <View style={styles.pageContenu}>
         <View style={styles.blockCreationSeance}>
-          <TouchableOpacity onPress={this.getListeEntraineur}>
-            <Text>Test</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.getNom}>
+          <TouchableOpacity onPress={this.getNomEntraineur}>
             <Text>Test</Text>
           </TouchableOpacity>
             <Text style={styles.textCreationSeance}>Nom de l'entraineur : </Text>
 
-            <Picker selectedValue={this.state.selectEntraineur} onValueChange={entraineurSeance => this.setState({entraineurSeance})}>
+            <Picker  onValueChange={entraineurSeance => this.setState({entraineurSeance})}>
               
               <Picker.Item label={nomEntraineur} style={styles.designPicker}/>
             </Picker>
@@ -162,6 +148,5 @@ const styles = StyleSheet.create({
     right:100,
     width:'100%',
     fontFamily: 'SFMedium',
-    color:'#F00'
   },
 })
