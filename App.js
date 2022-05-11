@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import LoginScreen from './screen/LoginScreen';
-import InscriptionScreen from './screen/InscriptionScreen';
+import EntraineurInscriptionScreen from './screen/EntraineurInscriptionScreen';
 import JoueurScreen from './screen/JoueurScreen';
 import EntraineurScreen from './screen/EntraineurScreen';
 import JoueurParametreScreen from './screen/JoueurParametreScreen';
@@ -47,6 +47,8 @@ function MenuDrawerEntraineur(){
       <DrawerEntraineur.Screen name='Accueil' component={EntraineurScreen}/>
       <DrawerEntraineur.Screen name='Progression' component={EntraineurProgressionScreen}/>
       <DrawerEntraineur.Screen name='Seance' component={EntraineurSeanceScreen}/>
+      <DrawerEntraineur.Screen name='Inscription' component={EntraineurInscriptionScreen}/>
+
     </DrawerEntraineur.Navigator>
   )
 }
@@ -77,7 +79,7 @@ if (!loaded) {
        <Naviguer.Screen name = "Login" component={LoginScreen}/>
        <Naviguer.Screen name = "JoueurInterface" component={MenuDrawerJoueur}/>
        <Naviguer.Screen name = "EntraineurInterface" component={MenuDrawerEntraineur}/>
-       <Naviguer.Screen name = "Inscription" component={InscriptionScreen}/>
+       <Naviguer.Screen name = "Inscription" component={EntraineurInscriptionScreen}/>
        <Naviguer.Screen name = "JoueurParametre" component={JoueurParametreScreen}/>
        <Naviguer.Screen name = "JoueuProgression" component={JoueurProgressionScreen}/>
        <Naviguer.Screen name = "EntraineurParametre" component={EntraineurParametreScreen}/>
