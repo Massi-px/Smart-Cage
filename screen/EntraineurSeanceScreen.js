@@ -6,17 +6,21 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { LogBox } from "react-native";
 import Seance from '../class/CSeance';
 import Information from '../class/CInformation';
+import Login from '../class/CLogin';
 
 var nouvelleSeance = new Seance();
-var informationListeEntraineur = Information.getInstance();
-var nomEntraineur = '';
+
+    
+var ConnexionUser = Login.getInstance();
+var information = ConnexionUser.getInformationJoueur();
+
 
 export default class EntraineurSeanceScreen extends Component{
     constructor(props) {
         super(props);
         this.state = {
           selectEntraineur:'',
-          entraineurSeance:'',
+          entraineurSeance: information.nom,
           dateSeance: '',
           categorie:'',
           zoneDeTir:'',
@@ -40,9 +44,9 @@ created() {
 
 
   render(){
-    informationListeEntraineur.requeteListeEntraineur();
-    nomEntraineur = informationListeEntraineur.getListeEntraineur();
-    console.log(nomEntraineur);
+
+
+
   return(
   <SafeAreaView style={styles.container}>
 
@@ -58,16 +62,14 @@ created() {
     </View>
     <View style={styles.pageContenu}>
         <View style={styles.blockCreationSeance}>
-          <TouchableOpacity onPress={this.getNomEntraineur}>
-            <Text>Test</Text>
-          </TouchableOpacity>
+
+          <View style={styles.blockSeance}>
+
             <Text style={styles.textCreationSeance}>Nom de l'entraineur : </Text>
+            <Text style={styles.textNomEntraineur}>{this.state.entraineurSeance}</Text>
 
-            <Picker  onValueChange={entraineurSeance => this.setState({entraineurSeance})}>
-              
-              <Picker.Item label={nomEntraineur} style={styles.designPicker}/>
-            </Picker>
-
+          </View>
+          <View style={styles.blockSeance}>
             <Text style={styles.textCreationSeance}>Date de la séance : </Text>
 
             <DatePicker
@@ -92,8 +94,14 @@ created() {
         }}
               onDateChange={dateSeance => {this.setState({dateSeance})}}
               />
+          </View>
+
+          <View style={styles.blockSeance}>
             <Text style={styles.textCreationSeance}>Categorie : </Text>
-            <Text style={styles.textCreationSeance}>Zone de tir : </Text>
+          </View>
+            <View style={styles.blockSeance}>
+              <Text style={styles.textCreationSeance}>Zone de tir : </Text>
+            </View>
         </View>
     </View>
   </SafeAreaView>
@@ -131,22 +139,34 @@ const styles = StyleSheet.create({
     color:'lightgrey',
     flexDirection: 'row',
   },
+
   pageContenu:{
     backgroundColor:'white',
     width:'100%',
     height:'100%',
     borderRadius:40,
   },
+
   blockCreationSeance:{
     padding:20,
   },
+
   textCreationSeance:{
     fontFamily: 'SFBold',
     fontSize:20,
+    
   },
-  designPicker:{
-    right:100,
-    width:'100%',
+
+  blockSeance:{
+    flexDirection:'row',
+    padding:10,
+  },
+
+  textNomEntraineur:{
     fontFamily: 'SFMedium',
+    fontSize:20,
+    textAlign: "center",
+    justifyContent: "center",
   },
+
 })
