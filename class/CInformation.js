@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-var listeEntraineur = '';
+var listeJoueur = '';
 export default class Information extends Component {
     constructor(props) {
         super(props);
@@ -17,25 +17,32 @@ export default class Information extends Component {
           return this.Information;
       }
 
-      requeteListeEntraineur = async() => {
-          
-        await fetch('http://192.168.1.26:80/php/mobile_api/liste_entraineur.php',{
-          method:'get',
-          dataType: 'json',
-          header:{
-              'Accept': 'application/json',
-              'Content-type': 'application/json'
-          },
-        })
-            .then((Response) => Response.json())
-            .then(ResponseJson=>{
-              console.log(ResponseJson);
-              listeEntraineur = ResponseJson[0].nom;
-            })
-        }
+      requeteListeJoueur = async(p_categorie='') => {
 
-        getListeEntraineur(){
-            return(listeEntraineur);
+          var userCategorie = p_categorie;
+          console.log(userCategorie);
+        await fetch('http://192.168.224.127:80/php/mobile_api/listeJoueur.php',{
+            method:'post',
+            header:{
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body:JSON.stringify({
+                categorie: userCategorie,
+            })
+          })
+          .then((Response) => Response.json())
+          .then((ResponseJson)=>{
+            listeJoueur = ResponseJson;
+              console.log(listeJoueur);
+          })
+          .catch((error)=>{
+              console.error(error);
+          })
+      }
+
+        getListeCategorie(){
+            return(listeJoueur);
         }
 
 
