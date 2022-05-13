@@ -14,6 +14,11 @@ var nouvelleSeance = new Seance();
 var ConnexionUser = Login.getInstance();
 var information = ConnexionUser.getInformationJoueur();
 
+var InformationInstance = Information.getInstance();
+
+
+
+
 
 export default class EntraineurSeanceScreen extends Component{
     constructor(props) {
@@ -37,6 +42,11 @@ created() {
     ]); 
   }
 
+  listeJoueur = async() => {
+    console.log(this.state.categorie);
+    InformationInstance.requeteListeJoueur(this.state.categorie);
+    InformationInstance.getListeCategorie();
+  }
 
   creationSeance = () => {
     nouvelleSeance.creationSeance(this.state.entraineurSeance, this.state.dateSeance, this.state.categorie, this.state.zoneDeTir);
@@ -44,9 +54,6 @@ created() {
 
 
   render(){
-
-
-
   return(
   <SafeAreaView style={styles.container}>
 
@@ -73,10 +80,10 @@ created() {
             <Text style={styles.textCreationSeance}>Date de la séance : </Text>
 
             <DatePicker
-              style={{width: 200}}
+              style={{width: '40%',}}
               date={this.state.dateSeance}
               mode="date"
-              placeholder="selectionner la date"
+              placeholder="DD/MM/YYYY"
               format="DD-MM-YYYY"
               confirmBtnText="Confirm"
               cancelBtnText="Cancel"
@@ -88,8 +95,11 @@ created() {
                 marginLeft: 0
               },
               dateInput: {
-                marginLeft: 36
+                position: 'relative',
+                marginLeft: 32,
+                borderRadius:15,
               }
+
           // ... You can check the source to find the other keys.
         }}
               onDateChange={dateSeance => {this.setState({dateSeance})}}
@@ -98,6 +108,17 @@ created() {
 
           <View style={styles.blockSeance}>
             <Text style={styles.textCreationSeance}>Categorie : </Text>
+            <View style={styles.blockListeDeroulanteCategorie}>
+              <Picker selectedValue={this.state.categorie} onValueChange={categorie=>this.setState({categorie})} style={styles.listeDeroulanteCategorie}>
+                <Picker.Item label='U6/U7' value='U7'/>
+                <Picker.Item label='U8/U9' value='U9'/>
+                <Picker.Item label='U10/U13' value='U13'/>
+                <Picker.Item label='U15+' value='U15+'/>
+              </Picker>
+            </View>
+            <TouchableOpacity onPress={this.listeJoueur}>
+              <Text>test</Text>
+            </TouchableOpacity>
           </View>
             <View style={styles.blockSeance}>
               <Text style={styles.textCreationSeance}>Zone de tir : </Text>
@@ -148,7 +169,7 @@ const styles = StyleSheet.create({
   },
 
   blockCreationSeance:{
-    padding:20,
+    padding:10,
   },
 
   textCreationSeance:{
@@ -167,6 +188,16 @@ const styles = StyleSheet.create({
     fontSize:20,
     textAlign: "center",
     justifyContent: "center",
+  },
+
+  blockListeDeroulanteCategorie:{
+    padding:5,
+    backgroundColor:'#F00',
+    width:'50%',
+    borderRadius:20,
+  },
+  listeDeroulanteCategorie:{
+    width:'100%',
   },
 
 })
