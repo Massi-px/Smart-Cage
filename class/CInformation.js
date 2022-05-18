@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-var listeJoueur = '';
+var listeJoueur;
 export default class Information extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +34,7 @@ export default class Information extends Component {
           .then((Response) => Response.json())
           .then((ResponseJson)=>{
             listeJoueur = ResponseJson;
-              console.log(listeJoueur);
+            
           })
           .catch((error)=>{
               console.error(error);
@@ -42,6 +42,7 @@ export default class Information extends Component {
       }
 
         getListeCategorie(){
+          console.log(listeJoueur);
             return(listeJoueur);
         }
 
