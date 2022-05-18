@@ -12,6 +12,7 @@ var nouvelleSeance = new Seance();
 
     
 var ConnexionUser = Login.getInstance();
+
 var information = ConnexionUser.getInformationJoueur();
 
 var InformationInstance = Information.getInstance();
@@ -27,6 +28,7 @@ export default class EntraineurSeanceScreen extends Component{
           selectEntraineur:'',
           entraineurSeance: information.nom,
           dateSeance: '',
+          joueurSelectionne:'',
           categorie:'',
           zoneDeTir:'',
        };
@@ -43,20 +45,17 @@ created() {
   }
 
   listeJoueur = async() => {
-    console.log(this.state.categorie);
-    InformationInstance.requeteListeJoueur(this.state.categorie);
-    InformationInstance.getListeCategorie();
+    await InformationInstance.requeteListeJoueur(this.state.categorie);
   }
 
   creationSeance = () => {
-    nouvelleSeance.creationSeance(this.state.entraineurSeance, this.state.dateSeance, this.state.categorie, this.state.zoneDeTir);
+    nouvelleSeance.creationSeance(this.state.entraineurSeance, this.state.dateSeance, this.state.categorie, this.state.zoneDeTir, this.state.joueurSelectionne);
   }
 
 
   render(){
   return(
   <SafeAreaView style={styles.container}>
-
     <View style = {styles.Header}>
         <View style={styles.BlockHamburgerMenu}>
           <TouchableOpacity onPress={this.openMenu}>
@@ -116,13 +115,19 @@ created() {
                 <Picker.Item label='U15+' value='U15+'/>
               </Picker>
             </View>
+          </View>
+
+          <View style={styles.blockSeance}>
+              <Text style={styles.textCreationSeance}> Liste des joueurs :</Text>
             <TouchableOpacity onPress={this.listeJoueur}>
               <Text>test</Text>
             </TouchableOpacity>
-          </View>
+            </View>
+
             <View style={styles.blockSeance}>
               <Text style={styles.textCreationSeance}>Zone de tir : </Text>
             </View>
+
         </View>
     </View>
   </SafeAreaView>
@@ -192,7 +197,7 @@ const styles = StyleSheet.create({
 
   blockListeDeroulanteCategorie:{
     padding:5,
-    backgroundColor:'#F00',
+    backgroundColor:'#CCFFCC',
     width:'50%',
     borderRadius:20,
   },
