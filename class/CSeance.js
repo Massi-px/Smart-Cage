@@ -1,12 +1,16 @@
 import { Component } from 'react';
+import Login from '../class/CLogin';
 
 export default class Seance extends Component {
     constructor(props) {
         super(props);
       }
 
-        creationSeance = async(p_selectEntraineur='', p_dateSeance= '', p_categorie='', p_zoneDeTir='', p_joueurSelectionne='') => {
-            var selectEntraineur = p_selectEntraineur;
+        creationSeance = async(p_dateSeance= '', p_categorie='', p_zoneDeTir='', p_joueurSelectionne='') => {
+            var ConnexionUser = Login.getInstance();
+            var information = ConnexionUser.getInformationJoueur();
+            var selectEntraineur = information.nom;
+            
             var dateSeance = p_dateSeance;
             var categorie = p_categorie;
             var zoneDeTir = p_zoneDeTir;
