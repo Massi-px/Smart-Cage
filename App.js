@@ -13,6 +13,7 @@ import EntraineurProgressionScreen from './screen/EntraineurProgressionScreen';
 import EntraineurSeanceScreen from './screen/EntraineurSeanceScreen';
 import {useFonts} from 'expo-font'
 import CustomDrawer from './components/CustomDrawer';
+import TestScreen from './screen/testScreen';
 
 
 /* création des objets permettant de contenir les naviguateurs*/
@@ -48,6 +49,7 @@ function MenuDrawerEntraineur(){
       <DrawerEntraineur.Screen name='Progression' component={EntraineurProgressionScreen}/>
       <DrawerEntraineur.Screen name='Seance' component={EntraineurSeanceScreen}/>
       <DrawerEntraineur.Screen name='Inscription' component={EntraineurInscriptionScreen}/>
+      <DrawerEntraineur.Screen name='Test' component={TestScreen}/>
 
     </DrawerEntraineur.Navigator>
   )
