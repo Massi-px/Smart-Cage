@@ -7,32 +7,25 @@ import { LogBox } from "react-native";
 import Seance from '../class/CSeance';
 import Information from '../class/CInformation';
 import Login from '../class/CLogin';
+import SelectBox from 'react-native-multi-selectbox';
+
 
 var nouvelleSeance = new Seance();
 
-    
-var ConnexionUser = Login.getInstance();
-
-var information = ConnexionUser.getInformationJoueur();
-
 var InformationInstance = Information.getInstance();
-
-
-
-
 
 export default class EntraineurSeanceScreen extends Component{
     constructor(props) {
         super(props);
         this.state = {
-          selectEntraineur:'',
-          entraineurSeance: information.nom,
           dateSeance: '',
           joueurSelectionne:'',
-          categorie:'',
+          categorie:'U7',
           zoneDeTir:'',
        };
       }
+
+
 
     openMenu = () => {this.props.navigation.openDrawer();}
     
@@ -45,15 +38,25 @@ created() {
   }
 
   listeJoueur = async() => {
+    var categorieList='';
     await InformationInstance.requeteListeJoueur(this.state.categorie);
+    
+    categorieList=InformationInstance.getListeCategorie();
+    return(categorieList);
   }
 
   creationSeance = () => {
-    nouvelleSeance.creationSeance(this.state.entraineurSeance, this.state.dateSeance, this.state.categorie, this.state.zoneDeTir, this.state.joueurSelectionne);
+    nouvelleSeance.creationSeance(this.state.dateSeance, this.state.categorie, this.state.zoneDeTir, this.state.joueurSelectionne);
   }
 
 
   render(){
+
+    var ConnexionUser = Login.getInstance();
+
+    var information = ConnexionUser.getInformationJoueur();
+    const getNom = () => {return(information.nom)};
+
   return(
   <SafeAreaView style={styles.container}>
     <View style = {styles.Header}>
@@ -72,7 +75,7 @@ created() {
           <View style={styles.blockSeance}>
 
             <Text style={styles.textCreationSeance}>Nom de l'entraineur : </Text>
-            <Text style={styles.textNomEntraineur}>{this.state.entraineurSeance}</Text>
+            <Text style={styles.textNomEntraineur} >{getNom()}</Text>
 
           </View>
           <View style={styles.blockSeance}>
