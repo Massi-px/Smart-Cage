@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component, useState} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-datepicker';
@@ -7,19 +7,23 @@ import { LogBox } from "react-native";
 import Seance from '../class/CSeance';
 import Information from '../class/CInformation';
 import Login from '../class/CLogin';
-import SelectBox from 'react-native-multi-selectbox';
+import SelectBox from 'react-native-multi-selectbox'; 
+import { xorBy } from 'lodash';
 
 
 var nouvelleSeance = new Seance();
 
 var InformationInstance = Information.getInstance();
 
+var listeJoueur=[{item:'',id:'',},]
+var selectListJoueur=[{item:'',id:'',}]
+
 export default class EntraineurSeanceScreen extends Component{
     constructor(props) {
         super(props);
         this.state = {
           dateSeance: '',
-          joueurSelectionne:'',
+          joueurSelectionne:[{item:'',id:'',}],
           categorie:'U7',
           zoneDeTir:'',
        };
@@ -38,22 +42,30 @@ created() {
   }
 
   listeJoueur = async() => {
-    var categorieList='';
+    var categoriePlayerList='';
     await InformationInstance.requeteListeJoueur(this.state.categorie);
     
-    categorieList=InformationInstance.getListeCategorie();
-    return(categorieList);
+    categoriePlayerList=InformationInstance.getListeJoueur();
+
+    for (let index = 0; index < categoriePlayerList.length; index++) {
+      listeJoueur.push({item: categoriePlayerList[index].nom, id:categoriePlayerList[index].nom})
+    }
+
+    return(categoriePlayerList);
   }
 
   creationSeance = () => {
     nouvelleSeance.creationSeance(this.state.dateSeance, this.state.categorie, this.state.zoneDeTir, this.state.joueurSelectionne);
+
+    
+
   }
 
 
   render(){
 
     var ConnexionUser = Login.getInstance();
-
+    var selectedPlayers = '';
     var information = ConnexionUser.getInformationJoueur();
     const getNom = () => {return(information.nom)};
 
@@ -125,6 +137,18 @@ created() {
             <TouchableOpacity onPress={this.listeJoueur}>
               <Text>test</Text>
             </TouchableOpacity>
+            <View style={styles.blockSeanceTest}>
+            <SelectBox
+            label="Select multiple"
+
+            options={listeJoueur}
+            selectedValues={listeJoueur}
+            onMultiSelect={joueurSelectionne=>this.setState({joueurSelectionne})}
+            onTapClose={joueurSelectionne=>this.setState({joueurSelectionne})}
+            isMulti
+            />
+            </View>
+
             </View>
 
             <View style={styles.blockSeance}>
@@ -137,6 +161,7 @@ created() {
   );
  };
 }
+
 //Fonction styles contenur le design en CSS
 const styles = StyleSheet.create({
   container: {
@@ -206,6 +231,11 @@ const styles = StyleSheet.create({
   },
   listeDeroulanteCategorie:{
     width:'100%',
+  },
+
+  blockSeanceTest:{
+    top:25,
+    right:200
   },
 
 })
