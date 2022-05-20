@@ -15,13 +15,13 @@ var nouvelleSeance = new Seance();
 
 var InformationInstance = Information.getInstance();
 
-var listeJoueur=[{item:'',id:'',},]
-var selectListJoueur=[{item:'',id:'',}]
+var listeJoueur=[{item:'',id:'',},];
 
 export default class EntraineurSeanceScreen extends Component{
     constructor(props) {
         super(props);
         this.state = {
+          selectListJoueur:[],
           dateSeance: '',
           joueurSelectionne:[{item:'',id:'',}],
           categorie:'U7',
@@ -47,11 +47,22 @@ created() {
     
     categoriePlayerList=InformationInstance.getListeJoueur();
 
-    for (let index = 0; index < categoriePlayerList.length; index++) {
-      listeJoueur.push({item: categoriePlayerList[index].nom, id:categoriePlayerList[index].nom})
+    for (let index = 0; index < categoriePlayerList.length; index++)
+    { 
+    listeJoueur.push({item: categoriePlayerList[index].nom, id:categoriePlayerList[index].nom});
     }
 
-    return(categoriePlayerList);
+    for (let index = 0; index < categoriePlayerList.length; index++) {
+      
+      if(categoriePlayerList[index].categorie!=this.state.categorie){
+        delete listeJoueur[{item:categoriePlayerList[index].nom,id:categoriePlayerList[index].nom}]
+      }
+      
+    }
+    
+
+
+    console.log(listeJoueur);
   }
 
   creationSeance = () => {
@@ -65,7 +76,7 @@ created() {
   render(){
 
     var ConnexionUser = Login.getInstance();
-    var selectedPlayers = '';
+
     var information = ConnexionUser.getInformationJoueur();
     const getNom = () => {return(information.nom)};
 
@@ -139,20 +150,14 @@ created() {
             </TouchableOpacity>
             <View style={styles.blockSeanceTest}>
             <SelectBox
-            label="Select multiple"
-
-            options={listeJoueur}
-            selectedValues={listeJoueur}
-            onMultiSelect={joueurSelectionne=>this.setState({joueurSelectionne})}
-            onTapClose={joueurSelectionne=>this.setState({joueurSelectionne})}
-            isMulti
-            />
+              label="Select multiple"
+              options={listeJoueur}
+              selectedValues={this.state.selectListJoueur}
+              onMultiSelect={this.onMultiChange}
+              onTapClose={this.onMultiChange}
+              isMulti
+              />
             </View>
-
-            </View>
-
-            <View style={styles.blockSeance}>
-              <Text style={styles.textCreationSeance}>Zone de tir : </Text>
             </View>
 
         </View>
@@ -160,6 +165,11 @@ created() {
   </SafeAreaView>
   );
  };
+
+ onMultiChange() {
+  return(item)=>this.setState(xorBy(selectListJoueur, [item], 'id'))
+}
+
 }
 
 //Fonction styles contenur le design en CSS
@@ -235,7 +245,14 @@ const styles = StyleSheet.create({
 
   blockSeanceTest:{
     top:25,
-    right:200
+    right:200,
+    height:40,
+    width:300
+  },
+
+  blockSeance2:{
+    flexDirection:'row',
+    padding:30,
   },
 
 })
