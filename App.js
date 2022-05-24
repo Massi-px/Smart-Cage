@@ -12,6 +12,7 @@ import EntraineurParametreScreen from './screen/Entraineur/EntraineurParametreSc
 import EntraineurProgressionScreen from './screen/Entraineur/EntraineurProgressionScreen';
 import EntraineurSeanceScreen from './screen/Entraineur/EntraineurSeanceScreen';
 import EntraineurSetSeanceScreen from './screen/Entraineur/EntraineurSetSeanceScreen';
+import EntraineurDemarrerSeance from './screen/Entraineur/EntraineurDemarrerSeance';
 import {useFonts} from 'expo-font'
 import CustomDrawer from './components/CustomDrawer';
 import TestScreen from './screen/testScreen';
@@ -87,6 +88,7 @@ if (!loaded) {
        <Naviguer.Screen name = "JoueuProgression" component={JoueurProgressionScreen}/>
        <Naviguer.Screen name = "EntraineurParametre" component={EntraineurParametreScreen}/>
        <Naviguer.Screen name = "CreationSeance" component={EntraineurSetSeanceScreen}/>
+       <Naviguer.Screen name = "DemarrerSeance" component={EntraineurDemarrerSeance}/>
      </Naviguer.Navigator>
    </NavigationContainer>
 /*Fin conteneur de naviguateur */
