@@ -16,7 +16,7 @@ export default class Seance extends Component {
             var zoneDeTir = p_zoneDeTir;
             var joueurSelectionne = p_joueurSelectionne;
 
-            await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
+            await fetch('http://192.168.145.255:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',

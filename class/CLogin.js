@@ -26,7 +26,7 @@ export default class Login extends Component {
           var userPassword =  p_userPassword;
 
           //Le await rend la méthode fetch asynchrone
-          await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
+          await fetch('http://192.168.145.255:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
