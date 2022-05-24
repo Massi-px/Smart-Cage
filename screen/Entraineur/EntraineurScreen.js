@@ -47,7 +47,7 @@ export default class EntraineurScreen extends Component {
         </View>
         <View style={styles.parametre}>
           <TouchableOpacity onPress={this.goToEntraineurParametre}>
-          <Image source={require('../assets/image/settingslogo.png')}/>
+          <Image source={require('../../assets/image/settingslogo.png')}/>
           </TouchableOpacity>
         </View>
     </View>

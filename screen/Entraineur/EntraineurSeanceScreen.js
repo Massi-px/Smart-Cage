@@ -4,6 +4,11 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const EntraineurSeanceScreen = (props) => {
 
+
+  const goToDemarrerSeance = () => {
+    props.navigation.push('DemarrerSeance');
+  }
+
   const goToCreationSeance = () => {
     props.navigation.push('CreationSeance');
   }
@@ -28,7 +33,7 @@ const EntraineurSeanceScreen = (props) => {
     </View>
     <View style={styles.pageContenu}>
       <View>
-        <TouchableOpacity style={styles.BoutonDemarrerSeance}>
+        <TouchableOpacity onPress={goToDemarrerSeance} style={styles.BoutonDemarrerSeance}>
           <Text>Demarrer la séance</Text >
         </TouchableOpacity>
       </View>

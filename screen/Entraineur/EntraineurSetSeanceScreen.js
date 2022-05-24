@@ -87,7 +87,7 @@ created() {
           </TouchableOpacity>
         </View>
         <View style = {styles.BlockTextAccueil}>
-          <Text style = {styles.TextAccueil}>Séance</Text>
+          <Text style = {styles.TextAccueil}>Créer la séance</Text>
         </View>
     </View>
     <View style={styles.pageContenu}>

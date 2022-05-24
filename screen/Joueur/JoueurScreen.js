@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import Login from '../class/CLogin';
+import Login from '../../class/CLogin';
 
 export default class JoueurScreen extends Component {
   
@@ -45,7 +45,7 @@ export default class JoueurScreen extends Component {
         </View>
         <View style={styles.parametre}>
           <TouchableOpacity onPress={this.goToJoueurParametre}>
-          <Image source={require('../assets/image/settingslogo.png')}/>
+          <Image source={require('../../assets/image/settingslogo.png')}/>
           </TouchableOpacity>
         </View>
     </View>
