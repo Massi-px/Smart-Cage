@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import Login from '../class/CLogin';
+import Login from '../../class/CLogin';
 
 export default class EntraineurScreen extends Component {
   
@@ -30,10 +30,6 @@ export default class EntraineurScreen extends Component {
 
     const getPrenom = () =>{
       return(information.prenom)
-    }
-
-    const getCategorie = ()=>{
-      return(information.categorie)
     }
 
     return(

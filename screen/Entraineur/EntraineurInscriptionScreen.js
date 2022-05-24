@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInput} from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { FontAwesome5 } from '@expo/vector-icons';
-import Login from '../class/CLogin';
+import Login from '../../class/CLogin';
 export default class InscriptionScreen extends Component {
   constructor(props) {
     super(props);

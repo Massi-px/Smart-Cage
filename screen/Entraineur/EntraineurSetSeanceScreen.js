@@ -4,9 +4,9 @@ import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-datepicker';
 import { FontAwesome5 } from "@expo/vector-icons";
 import { LogBox } from "react-native";
-import Seance from '../class/CSeance';
-import Information from '../class/CInformation';
-import Login from '../class/CLogin';
+import Seance from '../../class/CSeance';
+import Information from '../../class/CInformation';
+import Login from '../../class/CLogin';
 import SelectBox from 'react-native-multi-selectbox'; 
 import { xorBy } from 'lodash';
 
@@ -17,7 +17,7 @@ var InformationInstance = Information.getInstance();
 
 var listeJoueur=[{item:'',id:'',},];
 
-export default class EntraineurSeanceScreen extends Component{
+export default class EntraineurSetSeanceScreen extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -28,8 +28,6 @@ export default class EntraineurSeanceScreen extends Component{
           zoneDeTir:'',
        };
       }
-
-
 
     openMenu = () => {this.props.navigation.openDrawer();}
     

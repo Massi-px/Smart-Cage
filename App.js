@@ -3,14 +3,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import LoginScreen from './screen/LoginScreen';
-import EntraineurInscriptionScreen from './screen/EntraineurInscriptionScreen';
-import JoueurScreen from './screen/JoueurScreen';
-import EntraineurScreen from './screen/EntraineurScreen';
-import JoueurParametreScreen from './screen/JoueurParametreScreen';
-import JoueurProgressionScreen from './screen/JoueurProgressionScreen';
-import EntraineurParametreScreen from './screen/EntraineurParametreScreen';
-import EntraineurProgressionScreen from './screen/EntraineurProgressionScreen';
-import EntraineurSeanceScreen from './screen/EntraineurSeanceScreen';
+import EntraineurInscriptionScreen from './screen/Entraineur/EntraineurInscriptionScreen';
+import JoueurScreen from './screen/Joueur/JoueurScreen';
+import EntraineurScreen from './screen/Entraineur/EntraineurScreen';
+import JoueurParametreScreen from './screen/Joueur/JoueurParametreScreen';
+import JoueurProgressionScreen from './screen/Joueur/JoueurProgressionScreen';
+import EntraineurParametreScreen from './screen/Entraineur/EntraineurParametreScreen';
+import EntraineurProgressionScreen from './screen/Entraineur/EntraineurProgressionScreen';
+import EntraineurSeanceScreen from './screen/Entraineur/EntraineurSeanceScreen';
+import EntraineurSetSeanceScreen from './screen/Entraineur/EntraineurSetSeanceScreen';
 import {useFonts} from 'expo-font'
 import CustomDrawer from './components/CustomDrawer';
 import TestScreen from './screen/testScreen';
@@ -85,6 +86,7 @@ if (!loaded) {
        <Naviguer.Screen name = "JoueurParametre" component={JoueurParametreScreen}/>
        <Naviguer.Screen name = "JoueuProgression" component={JoueurProgressionScreen}/>
        <Naviguer.Screen name = "EntraineurParametre" component={EntraineurParametreScreen}/>
+       <Naviguer.Screen name = "CreationSeance" component={EntraineurSetSeanceScreen}/>
      </Naviguer.Navigator>
    </NavigationContainer>
 /*Fin conteneur de naviguateur */
