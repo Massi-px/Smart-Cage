@@ -1,25 +1,24 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import TcpSocket from 'react-native-tcp-socket';
+import { io, Socket } from 'socket.io-client';
+
+
 
 
 
 const EntraineurDemarrerScreen = (props) => {
+
+const SocketTcp = () =>{
+  const socket = io("http://192.168.145.231:1440");
+  socket.emit("test");
+  
+}
   
   const openMenu = () => {
     props.navigation.openDrawer();
   }
 
-  const net = require('react-native-tcp-socket');
-  
-  const client = TcpSocket.createConnection({
-    port: 1440,
-    host: "localhost",
-    tls: false,
-    // tlsCheckValidity: false, // Disable validity checking
-    // tlsCert: require('./selfmade.pem') // Self-signed certificate
-});
 
 
   return(
@@ -33,7 +32,7 @@ const EntraineurDemarrerScreen = (props) => {
     </View>
     <View style={styles.pageContenu}>
       <View>
-        <TouchableOpacity onPress={Socket}>
+        <TouchableOpacity onPress={SocketTcp}>
           <Text>Test Client</Text>
         </TouchableOpacity>
       </View>
