@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Login from '../class/CLogin';
 
+
 export default class Seance extends Component {
     constructor(props) {
         super(props);
@@ -39,6 +40,8 @@ export default class Seance extends Component {
               console.error(error);
           })
       }
+
+      demarrerLaSeance=async()=>{};
 
     
 }

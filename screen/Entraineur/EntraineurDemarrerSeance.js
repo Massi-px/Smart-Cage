@@ -1,12 +1,26 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import TcpSocket from 'react-native-tcp-socket';
+
+
 
 const EntraineurDemarrerScreen = (props) => {
   
   const openMenu = () => {
     props.navigation.openDrawer();
   }
+
+  const net = require('react-native-tcp-socket');
+  
+  const client = TcpSocket.createConnection({
+    port: 1440,
+    host: "localhost",
+    tls: false,
+    // tlsCheckValidity: false, // Disable validity checking
+    // tlsCert: require('./selfmade.pem') // Self-signed certificate
+});
+
 
   return(
   <SafeAreaView style={styles.container}>
@@ -18,6 +32,12 @@ const EntraineurDemarrerScreen = (props) => {
 
     </View>
     <View style={styles.pageContenu}>
+      <View>
+        <TouchableOpacity onPress={Socket}>
+          <Text>Test Client</Text>
+        </TouchableOpacity>
+      </View>
+      <Text>tessst</Text>
     </View>
   </SafeAreaView>
   );
