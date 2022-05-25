@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import React,{useState} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import TcpSocket from 'react-native-tcp-socket';
 
 
@@ -26,6 +26,7 @@ const SocketTcp = () =>{
   }
 
 
+  const [selectIDSeance, setIDSeance] = useState({});
 
   return(
   <SafeAreaView style={styles.container}>
@@ -34,15 +35,19 @@ const SocketTcp = () =>{
         <View style = {styles.BlockTextAccueil}>
           <Text style = {styles.TextAccueil}>Démarrer la séance</Text>
         </View>
-
     </View>
+
     <View style={styles.pageContenu}>
+        <View style={styles.blockListeDeroulanteCategorie}>
+          <Picker selectedValue={selectIDSeance} onValueChange={selectIDSeance=>setIDSeance({selectIDSeance})} style={styles.listeDeroulanteCategorie}>
+            <Picker.Item label='U6/U7' value='U7'/>
+          </Picker>
+        </View>
       <View>
         <TouchableOpacity onPress={SocketTcp}>
-          <Text>Test Client</Text>
+          <Text>Démarrer la séance</Text>
         </TouchableOpacity>
       </View>
-      <Text>tessst</Text>
     </View>
   </SafeAreaView>
   );
@@ -80,12 +85,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   pageContenu:{
+    padding:10,
     backgroundColor:'white',
     width:'100%',
     height:'100%',
     borderRadius:40,
+    alignItems:'center',
   },
-
+  blockListeDeroulanteCategorie:{
+    
+    backgroundColor:'#CCFFCC',
+    width:'50%',
+    borderRadius:20,
+  },
+  listeDeroulanteCategorie:{
+    width:'100%',
+  },
 })
 
 export default EntraineurDemarrerScreen;
