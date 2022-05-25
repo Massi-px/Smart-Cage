@@ -1,33 +1,53 @@
-import React,{useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
+import React,{Component} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, TextInput, Alert} from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import TcpSocket from 'react-native-tcp-socket';
+import Information from '../../class/CInformation';
 
+var verifSeance = Information.getInstance();
 
+export default class EntraineurDemarrerScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectIDSeance : '',
+    };
+  }
+  
 
+  DemarrerSeance = () =>{
 
+  var verification;
+  verifSeance.verifIDSeance(this.state.selectIDSeance);
 
-const EntraineurDemarrerScreen = (props) => {
+  verification = verifSeance.getIDSeance();
+    console.log({verification});
 
-const SocketTcp = () =>{
+  if(verification == 'ok'){
+    var IDSeance = this.state.selectIDSeance;
   const client = TcpSocket.createConnection({port:1440, host:'192.168.145.231'}, () => {
     // Write on the socket
-    client.write('Hello server!');
+    client.write({IDSeance});
   
     // Close socket
     client.destroy();
 
   });
+ }
+ else{
+   alert("Erreur la séance n'existe pas")
+ }
+
 
 }
   
-  const openMenu = () => {
+  openMenu = () => {
     props.navigation.openDrawer();
   }
 
 
-  const [selectIDSeance, setIDSeance] = useState({});
 
+render(){
   return(
   <SafeAreaView style={styles.container}>
 
@@ -38,13 +58,15 @@ const SocketTcp = () =>{
     </View>
 
     <View style={styles.pageContenu}>
-        <View style={styles.blockListeDeroulanteCategorie}>
-          <Picker selectedValue={selectIDSeance} onValueChange={selectIDSeance=>setIDSeance({selectIDSeance})} style={styles.listeDeroulanteCategorie}>
-            <Picker.Item label='U6/U7' value='U7'/>
-          </Picker>
+        <View style={styles.choixSeance}>
+        <TextInput style={styles.textchoixSeance}
+        placeholder="ID de la séance"
+        autoCapitalize='none'
+        onChangeText={selectIDSeance => this.setState({selectIDSeance})}
+        />
         </View>
       <View>
-        <TouchableOpacity onPress={SocketTcp}>
+        <TouchableOpacity onPress={this.DemarrerSeance}>
           <Text>Démarrer la séance</Text>
         </TouchableOpacity>
       </View>
@@ -52,7 +74,7 @@ const SocketTcp = () =>{
   </SafeAreaView>
   );
 };
-
+}
 //Fonction styles contenur le design en CSS
 const styles = StyleSheet.create({
   container: {
@@ -92,15 +114,13 @@ const styles = StyleSheet.create({
     borderRadius:40,
     alignItems:'center',
   },
-  blockListeDeroulanteCategorie:{
+  choixSeance:{
     
     backgroundColor:'#CCFFCC',
     width:'50%',
     borderRadius:20,
   },
-  listeDeroulanteCategorie:{
+  textchoixSeance:{
     width:'100%',
   },
 })
-
-export default EntraineurDemarrerScreen;
