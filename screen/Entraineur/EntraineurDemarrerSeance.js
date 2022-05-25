@@ -17,29 +17,31 @@ export default class EntraineurDemarrerScreen extends Component {
 
   DemarrerSeance = () =>{
 
-  var verification;
+  /*var verification;
   verifSeance.verifIDSeance(this.state.selectIDSeance);
 
   verification = verifSeance.getIDSeance();
     console.log({verification});
 
-  if(verification == 'ok'){
+  if(verification == 'ok'){*/
     var IDSeance = this.state.selectIDSeance;
   const client = TcpSocket.createConnection({port:1440, host:'192.168.145.231'}, () => {
     // Write on the socket
-    client.write({IDSeance});
+    client.write(IDSeance);
   
     // Close socket
     client.destroy();
 
   });
+}
+  /*
  }
  else{
    alert("Erreur la séance n'existe pas")
  }
 
 
-}
+}*/
   
   openMenu = () => {
     props.navigation.openDrawer();
