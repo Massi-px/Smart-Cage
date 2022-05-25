@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { io, Socket } from 'socket.io-client';
+import TcpSocket from 'react-native-tcp-socket';
 
 
 
@@ -10,9 +10,15 @@ import { io, Socket } from 'socket.io-client';
 const EntraineurDemarrerScreen = (props) => {
 
 const SocketTcp = () =>{
-  const socket = io("http://192.168.145.231:1440");
-  socket.emit("test");
+  const client = TcpSocket.createConnection({port:1440, host:'192.168.145.231'}, () => {
+    // Write on the socket
+    client.write('Hello server!');
   
+    // Close socket
+    client.destroy();
+
+  });
+
 }
   
   const openMenu = () => {
