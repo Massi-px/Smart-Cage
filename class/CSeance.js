@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Login from '../class/CLogin';
-
+import TcpSocket from 'react-native-tcp-socket';
 
 export default class Seance extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ export default class Seance extends Component {
             var zoneDeTir = p_zoneDeTir;
             var joueurSelectionne = p_joueurSelectionne;
 
-            await fetch('http://192.168.145.127:80/php/mobile_api/connexion_api.php',{
+            await fetch('http://192.168.61.127:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -41,7 +41,24 @@ export default class Seance extends Component {
           })
       }
 
-      demarrerLaSeance=async()=>{};
+      demarrerLaSeance=async(p_idSeance)=>{
 
-    
-}
+        var IDSeance = p_idSeance;
+
+        if(IDSeance == ''){
+            alert("Veuillez entrer l'id de la seance");
+        }
+        else
+        {
+            const client = TcpSocket.createConnection({port:1439, host:'192.168.61.231'}, () => {
+            // Write on the socket
+             client.write(IDSeance);
+
+            // Close socket
+            client.destroy();
+          });
+        }
+        
+      }
+
+};

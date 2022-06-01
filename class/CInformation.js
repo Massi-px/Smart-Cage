@@ -49,7 +49,7 @@ export default class Information extends Component {
         verifIDSeance = async(p_selectIDSeance = '') => {
           var selectIDSeance = p_selectIDSeance;
           console.log(selectIDSeance);
-          await fetch('http://192.168.145.127:80/php/mobile_api/IDSeance.php',{
+          await fetch('http://192.168.61.127:80/php/mobile_api/IDSeance.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',

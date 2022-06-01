@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, TextInput, Alert} from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import TcpSocket from 'react-native-tcp-socket';
-import Information from '../../class/CInformation';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, TextInput} from 'react-native';
+import Seance from '../../class/CSeance';
 
-var verifSeance = Information.getInstance();
+
+var startSeance = new Seance();
 
 export default class EntraineurDemarrerScreen extends Component {
   constructor(props) {
@@ -24,15 +23,7 @@ export default class EntraineurDemarrerScreen extends Component {
     console.log({verification});
 
   if(verification == 'ok'){*/
-    var IDSeance = this.state.selectIDSeance;
-  const client = TcpSocket.createConnection({port:1440, host:'192.168.145.231'}, () => {
-    // Write on the socket
-    client.write(IDSeance);
-  
-    // Close socket
-    client.destroy();
-
-  });
+  startSeance.demarrerLaSeance(this.state.selectIDSeance);
 }
   /*
  }
@@ -42,7 +33,7 @@ export default class EntraineurDemarrerScreen extends Component {
 
 
 }*/
-  
+   
   openMenu = () => {
     props.navigation.openDrawer();
   }
