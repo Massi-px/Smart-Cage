@@ -51,16 +51,19 @@ render(){
     </View>
 
     <View style={styles.pageContenu}>
+      <View>
+        <Text style={styles.textIDSeance}>Veuillez entrer l'id de la séance </Text>
+      </View>
         <View style={styles.choixSeance}>
         <TextInput style={styles.textchoixSeance}
-        placeholder="ID de la séance"
+        placeholder=" ID de la séance"
         autoCapitalize='none'
         onChangeText={selectIDSeance => this.setState({selectIDSeance})}
         />
         </View>
       <View>
-        <TouchableOpacity onPress={this.DemarrerSeance}>
-          <Text>Démarrer la séance</Text>
+        <TouchableOpacity onPress={this.DemarrerSeance} style={styles.BoutonDemarrerSeance}>
+          <Text style={styles.textBoutonDemarrerSeance}>Démarrer la séance</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -107,13 +110,32 @@ const styles = StyleSheet.create({
     borderRadius:40,
     alignItems:'center',
   },
+  textIDSeance:{
+    fontFamily: 'SFBold',
+    fontSize:20,
+  },
   choixSeance:{
-    
+    marginTop:30,
     backgroundColor:'#CCFFCC',
-    width:'50%',
+    width:'70%',
     borderRadius:20,
   },
   textchoixSeance:{
     width:'100%',
+    fontSize:20,
   },
+  BoutonDemarrerSeance: {
+    top:50,
+    width:200,
+    height:50,
+    borderRadius:20,
+    backgroundColor:"#39AD6E",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  textBoutonDemarrerSeance:{
+    fontFamily:'SFMedium',
+    fontSize:15,
+  },
+
 })

@@ -81,11 +81,6 @@ created() {
   return(
   <SafeAreaView style={styles.container}>
     <View style = {styles.Header}>
-        <View style={styles.BlockHamburgerMenu}>
-          <TouchableOpacity onPress={this.openMenu}>
-            <FontAwesome5 name="bars" size={24} color='lightgrey' />
-          </TouchableOpacity>
-        </View>
         <View style = {styles.BlockTextAccueil}>
           <Text style = {styles.TextAccueil}>Créer la séance</Text>
         </View>
@@ -143,9 +138,6 @@ created() {
 
           <View style={styles.blockSeance}>
               <Text style={styles.textCreationSeance}> Liste des joueurs :</Text>
-            <TouchableOpacity onPress={this.listeJoueur}>
-              <Text>test</Text>
-            </TouchableOpacity>
             <View style={styles.blockSeanceTest}>
             <SelectBox
               label="Select multiple"
@@ -186,11 +178,6 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center'
   },
-
-  BlockHamburgerMenu:{
-    left:-100,
-    },
-
  BlockTextAccueil: {
   alignItems:'center',
   },

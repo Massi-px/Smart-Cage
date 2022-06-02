@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import Login from '../class/CLogin';
 
-const CustomDrawer=(props)=>{
+const CustomDrawerEntraineur=(props)=>{
 
     var ConnexionUser = Login.getInstance();
     var information = ConnexionUser.getInformationJoueur();
@@ -18,7 +18,7 @@ const CustomDrawer=(props)=>{
         <View style={styles.container}>
         <DrawerContentScrollView {...props} contentContainerStyle={{backgroundColor:"#FEF5E7"}}>
             <ImageBackground source={require('../assets/image/menu-bg.jpg')} style={styles.drawerBackGround}>
-                <Image source={require('../assets/image/user-profile.jpg')} style={styles.imageProfile}/>
+                <Image source={require('../assets/image/entraineur-profile.png')} style={styles.imageProfile}/>
                 <Text style={styles.textNom}>{getNom()}</Text>
                 <Text style={styles.textCategorie}>{getType()}</Text>
             </ImageBackground>
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
         paddingTop:10
     }
 })
-export default CustomDrawer
+export default CustomDrawerEntraineur

@@ -14,8 +14,8 @@ import EntraineurSeanceScreen from './screen/Entraineur/EntraineurSeanceScreen';
 import EntraineurSetSeanceScreen from './screen/Entraineur/EntraineurSetSeanceScreen';
 import EntraineurDemarrerSeance from './screen/Entraineur/EntraineurDemarrerSeance';
 import {useFonts} from 'expo-font'
-import CustomDrawer from './components/CustomDrawer';
-import TestScreen from './screen/testScreen';
+import CustomDrawerEntraineur from './components/CustomDrawerEntraineur';
+import CustomDrawerJoueur from './components/CustomDrawerJoueur';
 
 
 /* création des objets permettant de contenir les naviguateurs*/
@@ -32,7 +32,7 @@ drawerContent={props=><DrawerContent {... props}/>} */
 /* Fonction créant le menu de navigation drawer avec ses écrans pour les joueurs*/
 function MenuDrawerJoueur(){
   return(
-    <DrawerJoueur.Navigator drawerContent={props=> <CustomDrawer {... props}/>} 
+    <DrawerJoueur.Navigator drawerContent={props=> <CustomDrawerJoueur {... props}/>} 
     initialRouteName = 'Accueil' 
     screenOptions={{headerShown: false, drawerLabelStyle: {fontFamily:'SFBold', fontSize:15}}}>
       <DrawerJoueur.Screen name='Accueil' component={JoueurScreen}/>
@@ -44,14 +44,13 @@ function MenuDrawerJoueur(){
 
 function MenuDrawerEntraineur(){
   return(
-    <DrawerEntraineur.Navigator drawerContent={props=> <CustomDrawer {... props}/>} 
+    <DrawerEntraineur.Navigator drawerContent={props=> <CustomDrawerEntraineur {... props}/>} 
     initialRouteName = 'Accueil' 
     screenOptions={{headerShown: false, drawerLabelStyle: {fontFamily:'SFBold', fontSize:15}}}>
       <DrawerEntraineur.Screen name='Accueil' component={EntraineurScreen}/>
       <DrawerEntraineur.Screen name='Progression' component={EntraineurProgressionScreen}/>
       <DrawerEntraineur.Screen name='Seance' component={EntraineurSeanceScreen}/>
       <DrawerEntraineur.Screen name='Inscription' component={EntraineurInscriptionScreen}/>
-      <DrawerEntraineur.Screen name='Test' component={TestScreen}/>
 
     </DrawerEntraineur.Navigator>
   )

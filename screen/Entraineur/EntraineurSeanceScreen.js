@@ -34,12 +34,12 @@ const EntraineurSeanceScreen = (props) => {
     <View style={styles.pageContenu}>
       <View>
         <TouchableOpacity onPress={goToDemarrerSeance} style={styles.BoutonDemarrerSeance}>
-          <Text>Demarrer la séance</Text >
+          <Text style={styles.textBouton}>Demarrer la séance</Text >
         </TouchableOpacity>
       </View>
-      <View>
+      <View style={styles.blockBoutonCreeSeance}>
         <TouchableOpacity onPress={goToCreationSeance}  style={styles.BoutonCreerSeance}>
-          <Text>Créer la séance</Text>
+          <Text style={styles.textBouton}>Créer la séance</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -97,6 +97,14 @@ const styles = StyleSheet.create({
 
   },
 
+  textBouton:{
+    fontFamily:'SFMedium',
+    fontSize:15,
+  },
+
+  blockBoutonCreeSeance:{
+    top:30,
+  },
   BoutonCreerSeance:{
     top:100,
     width:200,
