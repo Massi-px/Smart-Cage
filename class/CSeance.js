@@ -41,7 +41,7 @@ export default class Seance extends Component {
           })
       }
 
-      demarrerLaSeance=async(p_idSeance)=>{
+      demarrerLaSeance=(p_idSeance)=>{
 
         var IDSeance = p_idSeance;
 
@@ -50,7 +50,7 @@ export default class Seance extends Component {
         }
         else
         {
-            const client = TcpSocket.createConnection({port:1439, host:'192.168.61.231'}, () => {
+            const client = TcpSocket.createConnection({port:1439, host:'192.168.54.231'}, () => {
             // Write on the socket
              client.write(IDSeance);
 

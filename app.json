@@ -24,14 +24,6 @@
         "foregroundImage": "./assets/image/adaptive-icon.png",
         "backgroundColor": "#013E23"
       },
-      "splash": {
-        "statusBar": {
-          "visible": "false",
-          "image": "./assets/image/splash1.png",
-          "barStyle": "light-content",
-          "backgroundColor": "#013E23"
-        }
-      },
       "package": "SmartCage.apk"
     },
     "web": {
