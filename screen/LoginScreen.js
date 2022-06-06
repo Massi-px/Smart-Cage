@@ -25,7 +25,6 @@ export default class LoginScreen extends Component {
     
         if(userInformation.type == "entraineur"){
           this.props.navigation.navigate('EntraineurInterface');
-          this.props.navigation.reset({})
         }
 
         else if(userInformation.type == "joueur"){
