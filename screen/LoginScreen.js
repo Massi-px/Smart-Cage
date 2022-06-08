@@ -24,13 +24,13 @@ export default class LoginScreen extends Component {
     
     
         if(userInformation.type == "entraineur"){
-          this.props.navigation.navigate('EntraineurInterface');
+          this.props.navigation.reset({index: 0, routes: [{ name: 'EntraineurInterface' }],});
         }
 
         else if(userInformation.type == "joueur"){
-          this.props.navigation.navigate('JoueurInterface');
+          this.props.navigation.reset({index: 0, routes: [{ name: 'JoueurInterface' }],});
         }
-
+        
         else{
           alert("Reessayer");
           console.log(userInformation.type);
