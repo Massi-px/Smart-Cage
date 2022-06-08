@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInput} from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { FontAwesome5 } from '@expo/vector-icons';
-import Login from '../../class/CLogin';
+import Personne from '../../class/CPersonne';
 
+var InscriptionUser = Personne.getInstance();
 export default class InscriptionScreen extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,7 @@ export default class InscriptionScreen extends Component {
       nom:'',
       prenom:'',
       password:'',
+      confirmPassword:'',
       categorie : '',
       type:'',
     };
@@ -20,11 +22,33 @@ export default class InscriptionScreen extends Component {
     this.props.navigation.openDrawer();
   }
 
+  inscrire=()=>{
+    var verif='';
+
+    var password = this.state.password;
+    var confirmPassword = this.state.confirmPassword;
+
+    if (password == confirmPassword) {
+      InscriptionUser.inscription(this.state.nom, this.state.prenom, this.state.password, this.state.confirmPassword, this.state.categorie, this.state.type);
+    }
+    else{
+      alert('Les mot de passe ne correspondent pas')
+    }
+    verif = InscriptionUser.getVerificationInscription();
+    if(verif=='Ok'){
+      alert("l'utilisateur à bien été créé")
+    }
+    else if(verif=='exist'){
+      alert("L'utilisateur existe déjà")
+    }
+    
+  }
    /* Rendu de l'écran */
    render(){
 
-    var ConnexionUser = Login.getInstance();
-    var information = ConnexionUser.getInformationJoueur();
+
+
+
 
     return(
       <SafeAreaView style={styles.container}>
@@ -69,10 +93,34 @@ export default class InscriptionScreen extends Component {
       </View>
 
       <View style={styles.textBlock}>
-        <Picker style={styles.blockCategorie} selectedValue={this.state.categorie} onValueChange={categorie=>this.setState({categorie})}>
+        <TextInput style={styles.InscriptionText} 
+        placeholder="Confirmer le mdp" 
+        secureTextEntry={true}
+        autoCapitalize='none'
+        onChangeText={confirmPassword => this.setState({confirmPassword})}
+        />
+      </View>
+
+      <View style={styles.textBlock}>
+        <Picker style={styles.listeDeroulanteCategorie} selectedValue={this.state.categorie} onValueChange={categorie=>this.setState({categorie})} >
+          <Picker.Item label='U6/U7' value='U7' style={styles.textCategorie}/>
+          <Picker.Item label='U8/U9' value='U9' style={styles.textCategorie}/>
+          <Picker.Item label='U10/U13' value='U13' style={styles.textCategorie}/>
+          <Picker.Item label='U15+' value='U15+' style={styles.textCategorie}/>
+        </Picker>
+      </View>
+
+      <View style={styles.textBlock}>
+        <Picker style={styles.blockType} selectedValue={this.state.type} onValueChange={type=>this.setState({type})}>
         <Picker.Item label='joueur' value='joueur' style={styles.textCategorie} />
         <Picker.Item label='entraineur' value='entraineur' style={styles.textCategorie} />
         </Picker>
+      </View>
+
+      <View style={styles.blockTextBouton}>
+        <TouchableOpacity style={styles.Bouton} onPress={this.inscrire}>
+          <Text style={styles.textBouton}>Inscrire l'utilisateur</Text>
+        </TouchableOpacity>
       </View>
 
     </View>
@@ -150,15 +198,16 @@ export default class InscriptionScreen extends Component {
       textBlock: {
         marginTop:20,
         alignItems:'center',
+        justifyContent:'center',
+        borderRadius:20,
       },
 
-      blockCategorie: {
+      blockType: {
         padding:10,
         justifyContent:'center',
         width:200,
         height:50,
         fontSize:20,
-        borderRadius:20,
         backgroundColor:"#F0F0F0F0",
       },
       
@@ -167,7 +216,32 @@ export default class InscriptionScreen extends Component {
         textAlign:'center',
         fontSize:18,
       },
+      
+      listeDeroulanteCategorie:{
+        justifyContent:'center',
+        backgroundColor:'#F0F0F0F0',
+        height:50,
+        fontSize:20,
+        width:200,
+      },
+    
+      blockTextBouton:{
+        marginTop:30,
+        alignItems:'center',
+        justifyContent:'center'
+      },
 
-
+      Bouton: {
+        width:250,
+        height:50,
+        borderRadius:20,
+        backgroundColor:"#39AD6E",
+        alignItems:"center",
+        justifyContent:"center",
+      },
+      textBouton:{
+        fontFamily:'SFMedium',
+        fontSize:20,
+      },
 
     });

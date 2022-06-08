@@ -6,7 +6,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { LogBox } from "react-native";
 import Seance from '../../class/CSeance';
 import Information from '../../class/CInformation';
-import Login from '../../class/CLogin';
+import Login from '../../class/CPersonne';
 import MultiSelect from 'react-native-multiple-select';
 
 

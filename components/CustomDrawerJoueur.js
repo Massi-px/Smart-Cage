@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import Login from '../class/CLogin';
+import Personne from '../class/CPersonne';
 
 const CustomDrawerJoueur=(props)=>{
 
-    var ConnexionUser = Login.getInstance();
+    var ConnexionUser = Personne.getInstance();
     var information = ConnexionUser.getInformationJoueur();
     const getNom = () =>{
         return(information.nom)

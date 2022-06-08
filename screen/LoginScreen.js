@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInput} from 'react-native';
-import Login from '../class/CLogin';
+import Personne from '../class/CPersonne';
 
 /*Création de l'ecran LoginScreen qui consistera à logger/identifier les tulisateurs */
 
-var ConnexionUser = Login.getInstance();
+var ConnexionUser = Personne.getInstance();
 
 export default class LoginScreen extends Component {
     constructor(props) {

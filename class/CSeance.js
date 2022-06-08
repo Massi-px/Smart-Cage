@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Login from '../class/CLogin';
+import Login from './CPersonne';
 import TcpSocket from 'react-native-tcp-socket';
 
 export default class Seance extends Component {
