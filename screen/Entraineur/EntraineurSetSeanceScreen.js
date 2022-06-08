@@ -34,6 +34,7 @@ created() {
       'DatePickerIOS has been merged with DatePickerAndroid and will be removed in a future release.',
       'StatusBarIOS has been merged with StatusBar and will be removed in a future release.',
       'DatePickerAndroid has been merged with DatePickerIOS and will be removed in a future release.',
+      'Please update the following components: %s, DatePicker',
     ]); 
   }
 
@@ -46,11 +47,6 @@ created() {
     await InformationInstance.requeteListeJoueur(this.state.categorie);
     categoriePlayerList=InformationInstance.getListeJoueur();
 
-    /*for (let index = 0; index < categoriePlayerList.length; index++)
-    { 
-    listeJoueur.push({item: categoriePlayerList[index].nom, id:categoriePlayerList[index].nom});
-    }
-    */
     listeJoueur = categoriePlayerList;
     console.log(listeJoueur);
   }
@@ -131,6 +127,7 @@ created() {
               <TouchableOpacity onPress={this.listeJoueur}>
                 <Text>Test</Text>
               </TouchableOpacity>
+              <View>
               <MultiSelect
               hideTags
               items={listeJoueur}
@@ -140,8 +137,7 @@ created() {
               selectedItems={selectListJoueur}
               selectText="Selection des joueurs"
               searchInputPlaceholderText="Search Items..."
-              onChangeInput={ (text)=> console.log(text)}
-              altFontFamily="ProximaNova-Light"
+              altFontFamily="SFLight"
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
               tagTextColor="#CCC"
@@ -150,9 +146,10 @@ created() {
               itemTextColor="#000"
               displayKey="nom"
               searchInputStyle={{ color: '#CCC' }}
-              submitButtonColor="#CCC"
+              submitButtonColor="#013E23"
               submitButtonText="Submit"
               />
+              </View>
             </View>
             </View>
 

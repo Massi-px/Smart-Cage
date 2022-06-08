@@ -21,7 +21,7 @@ export default class Information extends Component {
       requeteListeJoueur = async(p_categorie='') => {
           var userCategorie = p_categorie;
           console.log(userCategorie);
-        await fetch('http://192.168.238.127:80/php/mobile_api/listeJoueur.php',{
+        await fetch('http://192.168.1.26:80/php/mobile_api/listeJoueur.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
