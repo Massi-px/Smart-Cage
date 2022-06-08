@@ -7,7 +7,6 @@ import { LogBox } from "react-native";
 import Seance from '../../class/CSeance';
 import Information from '../../class/CInformation';
 import Login from '../../class/CLogin';
-import SelectBox from 'react-native-multi-selectbox'; 
 import { xorBy } from 'lodash';
 
 
@@ -49,17 +48,6 @@ created() {
     { 
     listeJoueur.push({item: categoriePlayerList[index].nom, id:categoriePlayerList[index].nom});
     }
-
-    for (let index = 0; index < categoriePlayerList.length; index++) {
-      
-      if(categoriePlayerList[index].categorie!=this.state.categorie){
-        delete listeJoueur[{item:categoriePlayerList[index].nom,id:categoriePlayerList[index].nom}]
-      }
-      
-    }
-    
-
-
     console.log(listeJoueur);
   }
 
@@ -139,14 +127,6 @@ created() {
           <View style={styles.blockSeance}>
               <Text style={styles.textCreationSeance}> Liste des joueurs :</Text>
             <View style={styles.blockSeanceTest}>
-            <SelectBox
-              label="Select multiple"
-              options={listeJoueur}
-              selectedValues={this.state.selectListJoueur}
-              onMultiSelect={this.onMultiChange}
-              onTapClose={this.onMultiChange}
-              isMulti
-              />
             </View>
             </View>
 
@@ -158,6 +138,7 @@ created() {
 
  onMultiChange() {
   return(item)=>this.setState(xorBy(selectListJoueur, [item], 'id'))
+
 }
 
 }
