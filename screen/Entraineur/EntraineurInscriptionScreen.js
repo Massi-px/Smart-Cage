@@ -8,7 +8,11 @@ export default class InscriptionScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      nom:'',
+      prenom:'',
+      password:'',
       categorie : '',
+      type:'',
     };
   }
 
@@ -44,14 +48,14 @@ export default class InscriptionScreen extends Component {
           <TextInput style={styles.InscriptionText}
         placeholder="Nom"
         autoCapitalize='none'
-        onChangeText={username => this.setState({username})}/>
+        onChangeText={nom => this.setState({nom})}/>
           </View>
 
           <View style={styles.textBlock}>
         <TextInput style={styles.InscriptionText} 
         placeholder="Prenom" 
         autoCapitalize='none'
-        onChangeText={userPassword => this.setState({userPassword})}
+        onChangeText={prenom => this.setState({prenom})}
         />
       </View>
 
@@ -60,16 +64,7 @@ export default class InscriptionScreen extends Component {
         placeholder="Mot de passe" 
         secureTextEntry={true}
         autoCapitalize='none'
-        onChangeText={userPassword => this.setState({userPassword})}
-        />
-      </View>
-
-      <View style={styles.textBlock}>
-        <TextInput style={styles.InscriptionText} 
-        placeholder="Confirmer le mdp" 
-        secureTextEntry={true}
-        autoCapitalize='none'
-        onChangeText={userPassword => this.setState({userPassword})}
+        onChangeText={password => this.setState({password})}
         />
       </View>
 
@@ -80,12 +75,12 @@ export default class InscriptionScreen extends Component {
         </Picker>
       </View>
 
-
-        </View>
-      </SafeAreaView>
-      );
-    };
+    </View>
+    
+  </SafeAreaView>
+  );
   };
+};
     //Fonction styles contenur le design en CSS
     const styles = StyleSheet.create({
       container: {
