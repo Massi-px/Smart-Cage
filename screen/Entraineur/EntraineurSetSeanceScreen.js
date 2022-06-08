@@ -7,7 +7,7 @@ import { LogBox } from "react-native";
 import Seance from '../../class/CSeance';
 import Information from '../../class/CInformation';
 import Login from '../../class/CLogin';
-import { xorBy } from 'lodash';
+import MultiSelect from 'react-native-multiple-select';
 
 
 var nouvelleSeance = new Seance();
@@ -37,21 +37,22 @@ created() {
     ]); 
   }
 
+  creationSeance = () => {
+    nouvelleSeance.creationSeance(this.state.dateSeance, this.state.categorie, this.state.zoneDeTir, this.state.joueurSelectionne);
+  }
+
   listeJoueur = async() => {
-    var categoriePlayerList='';
+    var categoriePlayerList=[];
     await InformationInstance.requeteListeJoueur(this.state.categorie);
-    
     categoriePlayerList=InformationInstance.getListeJoueur();
 
-    for (let index = 0; index < categoriePlayerList.length; index++)
+    /*for (let index = 0; index < categoriePlayerList.length; index++)
     { 
     listeJoueur.push({item: categoriePlayerList[index].nom, id:categoriePlayerList[index].nom});
     }
+    */
+    listeJoueur = categoriePlayerList;
     console.log(listeJoueur);
-  }
-
-  creationSeance = () => {
-    nouvelleSeance.creationSeance(this.state.dateSeance, this.state.categorie, this.state.zoneDeTir, this.state.joueurSelectionne);
   }
 
   onSelectedItemsChange = selectListJoueur => {
@@ -64,6 +65,7 @@ created() {
 
     var information = ConnexionUser.getInformationJoueur();
     const getNom = () => {return(information.nom)};
+    const {selectListJoueur} = this.state;
 
   return(
   <SafeAreaView style={styles.container}>
@@ -126,6 +128,31 @@ created() {
           <View style={styles.blockSeance}>
               <Text style={styles.textCreationSeance}> Liste des joueurs :</Text>
             <View style={styles.blockSeanceTest}>
+              <TouchableOpacity onPress={this.listeJoueur}>
+                <Text>Test</Text>
+              </TouchableOpacity>
+              <MultiSelect
+              hideTags
+              items={listeJoueur}
+              uniqueKey="nom"
+              ref={(component) => { this.multiSelect = component }}
+              onSelectedItemsChange={this.onSelectedItemsChange}
+              selectedItems={selectListJoueur}
+              selectText="Selection des joueurs"
+              searchInputPlaceholderText="Search Items..."
+              onChangeInput={ (text)=> console.log(text)}
+              altFontFamily="ProximaNova-Light"
+              tagRemoveIconColor="#CCC"
+              tagBorderColor="#CCC"
+              tagTextColor="#CCC"
+              selectedItemTextColor="#CCC"
+              selectedItemIconColor="#CCC"
+              itemTextColor="#000"
+              displayKey="nom"
+              searchInputStyle={{ color: '#CCC' }}
+              submitButtonColor="#CCC"
+              submitButtonText="Submit"
+              />
             </View>
             </View>
 

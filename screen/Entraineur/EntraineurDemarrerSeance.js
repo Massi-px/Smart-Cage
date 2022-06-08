@@ -63,8 +63,16 @@ render(){
         </View>
       <View>
         <TouchableOpacity onPress={this.DemarrerSeance} style={styles.BoutonDemarrerSeance}>
-          <Text style={styles.textBoutonDemarrerSeance}>Démarrer la séance</Text>
+          <Text style={styles.textBouton}>Lancer la séance</Text>
         </TouchableOpacity>
+      </View>
+      <View>
+        <TouchableOpacity style={styles.Bouton}>
+          <Text style={styles.textBouton}>Information de la Seance</Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        
       </View>
     </View>
   </SafeAreaView>
@@ -133,7 +141,17 @@ const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
   },
-  textBoutonDemarrerSeance:{
+
+  Bouton: {
+    top:70,
+    width:200,
+    height:50,
+    borderRadius:20,
+    backgroundColor:"#39AD6E",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  textBouton:{
     fontFamily:'SFMedium',
     fontSize:15,
   },
