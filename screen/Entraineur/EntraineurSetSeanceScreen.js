@@ -22,7 +22,6 @@ export default class EntraineurSetSeanceScreen extends Component{
         this.state = {
           selectListJoueur:[],
           dateSeance: '',
-          joueurSelectionne:[{item:'',id:'',}],
           categorie:'U7',
           zoneDeTir:'',
        };
@@ -53,11 +52,11 @@ created() {
 
   creationSeance = () => {
     nouvelleSeance.creationSeance(this.state.dateSeance, this.state.categorie, this.state.zoneDeTir, this.state.joueurSelectionne);
-
-    
-
   }
 
+  onSelectedItemsChange = selectListJoueur => {
+    this.setState({selectListJoueur});
+  }
 
   render(){
 
@@ -136,10 +135,7 @@ created() {
   );
  };
 
- onMultiChange() {
-  return(item)=>this.setState(xorBy(selectListJoueur, [item], 'id'))
 
-}
 
 }
 
