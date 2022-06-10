@@ -13,7 +13,7 @@ export default class InscriptionScreen extends Component {
       prenom:'',
       password:'',
       confirmPassword:'',
-      categorie : '',
+      categorie : 'U7',
       type:'',
     };
   }
@@ -29,11 +29,12 @@ export default class InscriptionScreen extends Component {
     var confirmPassword = this.state.confirmPassword;
 
     if (password == confirmPassword) {
-      InscriptionUser.inscription(this.state.nom, this.state.prenom, this.state.password, this.state.confirmPassword, this.state.categorie, this.state.type);
+      InscriptionUser.inscription(this.state.nom, this.state.prenom, this.state.password, this.state.categorie, this.state.type);
     }
     else{
       alert('Les mot de passe ne correspondent pas')
     }
+
     verif = InscriptionUser.getVerificationInscription();
     if(verif=='Ok'){
       alert("l'utilisateur à bien été créé")
@@ -41,14 +42,9 @@ export default class InscriptionScreen extends Component {
     else if(verif=='exist'){
       alert("L'utilisateur existe déjà")
     }
-    
   }
    /* Rendu de l'écran */
    render(){
-
-
-
-
 
     return(
       <SafeAreaView style={styles.container}>

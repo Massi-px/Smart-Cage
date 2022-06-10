@@ -10,6 +10,7 @@ const CustomDrawerEntraineur=(props)=>{
     const getNom = () =>{
         return(information.nom)
       }
+      
     const getType = ()=>{
         return(information.type)
       }
