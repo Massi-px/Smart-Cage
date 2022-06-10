@@ -14,7 +14,7 @@ export default class InscriptionScreen extends Component {
       password:'',
       confirmPassword:'',
       categorie : 'U7',
-      type:'',
+      type:'joueur',
     };
   }
 
