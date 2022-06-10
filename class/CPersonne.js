@@ -26,7 +26,7 @@ export default class Personne extends Component {
           var userPassword =  p_userPassword;
 
           //Le await rend la méthode fetch asynchrone
-          await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
+          await fetch('http://192.168.209.127:80/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -58,7 +58,7 @@ export default class Personne extends Component {
         var userCategorie = p_userCategorie;
         var userType = userType;
 
-        await fetch('http://192.168.1.26:80/php/mobile_api/inscription.php',{
+        await fetch('http://192.168.209.127:80/php/mobile_api/inscription_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
