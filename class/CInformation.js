@@ -21,7 +21,7 @@ export default class Information extends Component {
       requeteListeJoueur = async(p_categorie='') => {
           var userCategorie = p_categorie;
           console.log(userCategorie);
-        await fetch('http://172.20.24.17:8080/serveurweb_smartcage/php/mobile_api/listeJoueur.php',{
+        await fetch('http://172.20.28.2:8080/serveurweb_smartcage/php/mobile_api/listeJoueur.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -48,7 +48,7 @@ export default class Information extends Component {
         verifIDSeance = async(p_selectIDSeance = '') => {
           var selectIDSeance = p_selectIDSeance;
           console.log(selectIDSeance);
-          await fetch('http://172.20.24.17:8080/serveurweb_smartcage/php/mobile_api/IDSeance.php',{
+          await fetch('http://172.20.28.2:8080/serveurweb_smartcage/php/mobile_api/IDSeance.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',

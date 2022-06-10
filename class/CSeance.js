@@ -17,7 +17,7 @@ export default class Seance extends Component {
             var zoneDeTir = p_zoneDeTir;
             var joueurSelectionne = p_joueurSelectionne;
 
-            await fetch('http://172.20.24.17:8080/serveurweb_smartcage/php/mobile_api/connexion_api.php',{
+            await fetch('http://172.20.28.2:8080/serveurweb_smartcage/php/mobile_api/connexion_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',

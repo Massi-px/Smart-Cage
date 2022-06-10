@@ -38,7 +38,11 @@ export default class EntraineurDemarrerScreen extends Component {
     props.navigation.openDrawer();
   }
 
+  informationSeance=()=>{
+    <View>
 
+    </View>
+  }
 
 render(){
   return(
@@ -71,7 +75,7 @@ render(){
           <Text style={styles.textBouton}>Information de la Seance</Text>
         </TouchableOpacity>
       </View>
-      <View>
+      <View style={styles.blockInfoSeance}>
         
       </View>
     </View>
@@ -133,7 +137,7 @@ const styles = StyleSheet.create({
     fontSize:20,
   },
   BoutonDemarrerSeance: {
-    top:50,
+    marginTop:50,
     width:200,
     height:50,
     borderRadius:20,
@@ -143,7 +147,7 @@ const styles = StyleSheet.create({
   },
 
   Bouton: {
-    top:70,
+    marginTop:20,
     width:200,
     height:50,
     borderRadius:20,
@@ -155,5 +159,10 @@ const styles = StyleSheet.create({
     fontFamily:'SFMedium',
     fontSize:15,
   },
+  blockInfoSeance:{
+    marginTop:20,
+    width:100,
+    backgroundColor:'#CCFFCC'
 
+  },
 })
