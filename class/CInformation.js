@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 var listeJoueur;
+var progressionJoueur;
 var verifIDSeance = '';
 export default class Information extends Component {
     constructor(props) {
@@ -79,7 +80,7 @@ export default class Information extends Component {
 
         progessionJoueur = async(p_nom = '') => {
           var username = p_nom;
-          console.log(nom);
+          console.log(username);
           await fetch('http://192.168.1.26:80/php/mobile_api/progression_api.php',{
             method:'post',
             header:{
@@ -92,12 +93,16 @@ export default class Information extends Component {
           })
           .then((Response) => Response.json())
           .then((ResponseJson)=>{
-            verifIDSeance = ResponseJson;  
+            progressionJoueur = ResponseJson;  
           })
           .catch((error)=>{
               console.error(error);
           })
 
+        }
+
+        getProgressionJoueur(){
+          return (progressionJoueur);
         }
 
 }

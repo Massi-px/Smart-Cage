@@ -1,16 +1,34 @@
-import * as React from 'react';
+import React, { useState } from 'react'; 
 import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import {LineChart,BarChart,PieChart,ProgressChart,ContributionGraph,StackedBarChart} from "react-native-chart-kit";
+import Information from '../../class/CInformation';
+import Personne from '../../class/CPersonne';
+
+var informationJoueur = Information.getInstance();
+var nomJoueur = Personne.getInstance();
+
+
 
 const JoueurProgressionScreen = (props) => {
+
+
 
   const goToJoueurParametre = () => {
     props.navigation.push('JoueurParametre');
   }
-  
+
   const openMenu = () => {
     props.navigation.openDrawer();
+  }
+
+  const progressionUser=()=>{
+    var nom;
+    nom = nomJoueur.getInformationJoueur()
+
+    informationJoueur.progessionJoueur(nom.nom)
+
+
   }
   
   const data = {
@@ -20,8 +38,11 @@ const JoueurProgressionScreen = (props) => {
       data: [1,2,3],
     }
   ],
-  legend: ["Score Joueur"] // optional
+  legend: ["Score Joueur"], // optional
+  
 };
+
+
 
 const chartConfig = {
 
@@ -33,14 +54,14 @@ const chartConfig = {
       color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
       labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
       style: {
-        borderRadius: 16
+        borderRadius: 16,
       },
       propsForDots: {
         r: "6",
         strokeWidth: "2",
         stroke: "#ffa726"
       }
-      
+
 }
 
   return(
@@ -58,17 +79,20 @@ const chartConfig = {
     </View>
     <View style={styles.pageContenu}>
     <View>
+      <TouchableOpacity onPress={progressionUser}>
       <Text>Bezier Line Chart</Text>
+      </TouchableOpacity>
     </View>
     <View>
       <LineChart
       data={data}
-      width={350}
+      width={Dimensions.get("window").width - 40}
       height={220}
       chartConfig={chartConfig}
       style={{
         padding:10,
-        borderRadius: 16
+        borderRadius: 16,
+        
       }}
       />
     </View>
