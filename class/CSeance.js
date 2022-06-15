@@ -17,7 +17,11 @@ export default class Seance extends Component {
             var zoneDeTir = p_zoneDeTir;
             var joueurSelectionne = p_joueurSelectionne;
 
+<<<<<<< Updated upstream
             await fetch('http://192.168.155.127:80/php/mobile_api/connexion_api.php',{
+=======
+            await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
+>>>>>>> Stashed changes
             method:'post',
             header:{
                 'Accept': 'application/json',

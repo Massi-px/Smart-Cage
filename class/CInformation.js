@@ -21,7 +21,11 @@ export default class Information extends Component {
       requeteListeJoueur = async(p_categorie='') => {
           var userCategorie = p_categorie;
           console.log(userCategorie);
+<<<<<<< Updated upstream
         await fetch('http://192.168.155.127:80/php/mobile_api/listeJoueur.php',{
+=======
+        await fetch('http://192.168.1.26:80/php/mobile_api/listeJoueur.php',{
+>>>>>>> Stashed changes
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -48,7 +52,11 @@ export default class Information extends Component {
         verifIDSeance = async(p_selectIDSeance = '') => {
           var selectIDSeance = p_selectIDSeance;
           console.log(selectIDSeance);
+<<<<<<< Updated upstream
           await fetch('http://192.168.155.127:80/php/mobile_api/IDSeance.php',{
+=======
+          await fetch('192.168.1.26:80/php/mobile_api/IDSeance.php',{
+>>>>>>> Stashed changes
             method:'post',
             header:{
                 'Accept': 'application/json',

@@ -26,7 +26,11 @@ export default class Personne extends Component {
           var userPassword =  p_userPassword;
 
           //Le await rend la méthode fetch asynchrone
+<<<<<<< Updated upstream
           await fetch('http://192.168.155.127:80/php/mobile_api/connexion_api.php',{
+=======
+          await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
+>>>>>>> Stashed changes
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -58,7 +62,11 @@ export default class Personne extends Component {
         var userCategorie = p_userCategorie;
         var userType = userType;
 
+<<<<<<< Updated upstream
         await fetch('http://192.168.155.127:80/php/mobile_api/inscription_api.php',{
+=======
+        await fetch('http://192.168.1.26:80/php/mobile_api/inscription_api.php',{
+>>>>>>> Stashed changes
             method:'post',
             header:{
                 'Accept': 'application/json',

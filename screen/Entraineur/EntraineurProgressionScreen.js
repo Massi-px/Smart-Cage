@@ -4,10 +4,6 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const EntraineurProgressionScreen = (props) => {
 
-  const goToJoueurParametre = () => {
-    props.navigation.push('JoueurParametre');
-  }
-  
   const openMenu = () => {
     props.navigation.openDrawer();
   }
