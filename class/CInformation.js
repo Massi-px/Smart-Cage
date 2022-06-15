@@ -21,11 +21,9 @@ export default class Information extends Component {
       requeteListeJoueur = async(p_categorie='') => {
           var userCategorie = p_categorie;
           console.log(userCategorie);
-<<<<<<< Updated upstream
-        await fetch('http://192.168.155.127:80/php/mobile_api/listeJoueur.php',{
-=======
+
         await fetch('http://192.168.1.26:80/php/mobile_api/listeJoueur.php',{
->>>>>>> Stashed changes
+
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -52,11 +50,9 @@ export default class Information extends Component {
         verifIDSeance = async(p_selectIDSeance = '') => {
           var selectIDSeance = p_selectIDSeance;
           console.log(selectIDSeance);
-<<<<<<< Updated upstream
-          await fetch('http://192.168.155.127:80/php/mobile_api/IDSeance.php',{
-=======
-          await fetch('192.168.1.26:80/php/mobile_api/IDSeance.php',{
->>>>>>> Stashed changes
+
+          await fetch('http://192.168.1.26:80:80/php/mobile_api/IDSeance.php',{
+
             method:'post',
             header:{
                 'Accept': 'application/json',
@@ -84,7 +80,7 @@ export default class Information extends Component {
         progessionJoueur = async(p_nom = '') => {
           var username = p_nom;
           console.log(nom);
-          await fetch('http://192.168.155.127:80/php/mobile_api/progression_api.php',{
+          await fetch('http://192.168.1.26:80/php/mobile_api/progression_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',

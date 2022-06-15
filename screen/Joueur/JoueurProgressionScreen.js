@@ -24,7 +24,8 @@ const JoueurProgressionScreen = (props) => {
 };
 
 const chartConfig = {
-  backgroundColor: "#e26a00",
+
+      backgroundColor: "#e26a00",
       backgroundGradientFrom: "#fb8c00",
       backgroundGradientTo: "#ffa726",
       decimalPlaces: 2, // optional, defaults to 2dp
@@ -39,6 +40,7 @@ const chartConfig = {
         strokeWidth: "2",
         stroke: "#ffa726"
       }
+      
 }
 
   return(
