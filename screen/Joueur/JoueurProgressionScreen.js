@@ -18,23 +18,28 @@ const JoueurProgressionScreen = (props) => {
   datasets: [
     {
       data: [1,2,3],
-      color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-      strokeWidth: 2 // optional
     }
   ],
-  legend: ["Rainy Days"] // optional
+  legend: ["Score Joueur"] // optional
 };
 
 const chartConfig = {
-  backgroundGradientFrom: "#1E2923",
-  backgroundGradientFromOpacity: 0,
-  backgroundGradientTo: "#08130D",
-  backgroundGradientToOpacity: 0.5,
-  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-  strokeWidth: 2, // optional, default 3
-  barPercentage: 0.5,
-  useShadowColorFromDataset: false // optional
-};
+  backgroundColor: "#e26a00",
+      backgroundGradientFrom: "#fb8c00",
+      backgroundGradientTo: "#ffa726",
+      decimalPlaces: 2, // optional, defaults to 2dp
+      barPercentage: 1,
+      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+      labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+      style: {
+        borderRadius: 16
+      },
+      propsForDots: {
+        r: "6",
+        strokeWidth: "2",
+        stroke: "#ffa726"
+      }
+}
 
   return(
   <SafeAreaView style={styles.container}>
@@ -51,15 +56,21 @@ const chartConfig = {
     </View>
     <View style={styles.pageContenu}>
     <View>
-  <Text>Bezier Line Chart</Text>
-  <LineChart
-  data={data}
-  width={100}
-  height={220}
-  chartConfig={chartConfig}
-  />
-</View>
+      <Text>Bezier Line Chart</Text>
     </View>
+    <View>
+      <LineChart
+      data={data}
+      width={350}
+      height={220}
+      chartConfig={chartConfig}
+      style={{
+        padding:10,
+        borderRadius: 16
+      }}
+      />
+    </View>
+  </View>
   </SafeAreaView>
   );
 };

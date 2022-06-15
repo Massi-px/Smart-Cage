@@ -73,5 +73,27 @@ export default class Information extends Component {
           return(verifIDSeance);
         }
 
+        progessionJoueur = async(p_nom = '') => {
+          var username = p_nom;
+          console.log(nom);
+          await fetch('http://192.168.155.127:80/php/mobile_api/progression_api.php',{
+            method:'post',
+            header:{
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body:JSON.stringify({
+              nom: username,
+            })
+          })
+          .then((Response) => Response.json())
+          .then((ResponseJson)=>{
+            verifIDSeance = ResponseJson;  
+          })
+          .catch((error)=>{
+              console.error(error);
+          })
+
+        }
 
 }
