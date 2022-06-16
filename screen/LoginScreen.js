@@ -15,7 +15,7 @@ export default class LoginScreen extends Component {
         };
       }
 
-//fonction pour se connecter à ma bdd
+//Fonction pour se connecter à ma bdd
       connexion = async() => {
         await ConnexionUser.login(this.state.username, this.state.userPassword);
         
