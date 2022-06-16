@@ -25,14 +25,19 @@ export default class InscriptionScreen extends Component {
   inscrire=()=>{
     var verif='';
 
+    var nom = this.state.nom;
+    var prenom= this.state.prenom;
     var password = this.state.password;
-    var confirmPassword = this.state.confirmPassword;
+    var confirmpassword = this.state.confirmPassword;
 
-    if (password == confirmPassword) {
-      InscriptionUser.inscription(this.state.nom, this.state.prenom, this.state.password, this.state.categorie, this.state.type);
+    if (nom == '' || prenom == '') {
+      alert('Veuillez entre un nom et un prenom')
+    }
+    else if (password != confirmpassword) {
+      alert('Les mot de passe ne correspondent pas')
     }
     else{
-      alert('Les mot de passe ne correspondent pas')
+      InscriptionUser.inscription(nom, prenom, password, confirmpassword, this.state.categorie, type);
     }
 
     verif = InscriptionUser.getVerificationInscription();

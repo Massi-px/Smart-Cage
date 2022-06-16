@@ -18,7 +18,7 @@ export default class Seance extends Component {
             var joueurSelectionne = p_joueurSelectionne;
 
 
-            await fetch('http://192.168.1.26:80/php/mobile_api/connexion_api.php',{
+            await fetch('http://192.168.155.127:80/php/mobile_api/connexion_api.php',{
 
             method:'post',
             header:{
@@ -52,10 +52,9 @@ export default class Seance extends Component {
         }
         else
         {
-            const client = TcpSocket.createConnection({port:1440, host:'172.20.24.19'}, () => {
+            const client = TcpSocket.createConnection({port:1440, host:'192.168.155.231'}, () => {
             // Write on the socket
              client.write(IDSeance);
-             client.destroy();
           });
         }
         
