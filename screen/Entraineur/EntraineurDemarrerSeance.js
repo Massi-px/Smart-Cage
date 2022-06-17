@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, TextInput} from 'react-native';
+import { Button } from 'react-native-web';
 import Seance from '../../class/CSeance';
 
 
@@ -24,6 +25,7 @@ export default class EntraineurDemarrerScreen extends Component {
 
   if(verification == 'ok'){*/
   startSeance.demarrerLaSeance(this.state.selectIDSeance);
+  alert("Seance Lancer");
 }
   /*
  }
@@ -39,7 +41,9 @@ export default class EntraineurDemarrerScreen extends Component {
   }
 
   informationSeance=()=>{
-    <View>
+    <View style={styles.blockInfoSeance}>
+      <Button></Button>
+      <Text>Test</Text>
 
     </View>
   }
@@ -71,7 +75,7 @@ render(){
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity style={styles.Bouton}>
+        <TouchableOpacity style={styles.Bouton} onPress={this.informationSeance}>
           <Text style={styles.textBouton}>Information de la Seance</Text>
         </TouchableOpacity>
       </View>

@@ -29,6 +29,7 @@ export default class InscriptionScreen extends Component {
     var prenom= this.state.prenom;
     var password = this.state.password;
     var confirmpassword = this.state.confirmPassword;
+    var type = this.state.type;
 
     if (nom == '' || prenom == '') {
       alert('Veuillez entre un nom et un prenom')
@@ -37,7 +38,7 @@ export default class InscriptionScreen extends Component {
       alert('Les mot de passe ne correspondent pas')
     }
     else{
-      InscriptionUser.inscription(nom, prenom, password, confirmpassword, this.state.categorie, type);
+      InscriptionUser.inscription(nom, prenom, password, this.state.categorie, type);
     }
 
     verif = InscriptionUser.getVerificationInscription();
