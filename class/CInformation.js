@@ -23,7 +23,7 @@ export default class Information extends Component {
           var userCategorie = p_categorie;
           console.log(userCategorie);
 
-        await fetch('http://192.168.1.26:80/php/mobile_api/listeJoueur.php',{
+        await fetch('http://172.20.28.2:8080/serveurweb_smartcage/php/mobile_api/listeJoueur.php',{
 
             method:'post',
             header:{
@@ -52,7 +52,7 @@ export default class Information extends Component {
           var selectIDSeance = p_selectIDSeance;
           console.log(selectIDSeance);
 
-          await fetch('http://192.168.155.127:80/php/mobile_api/IDSeance.php',{
+          await fetch('http://172.20.28.2:8080/serveurweb_smartcage/php/mobile_api/IDSeance.php',{
 
             method:'post',
             header:{
@@ -81,7 +81,7 @@ export default class Information extends Component {
         progessionJoueur = async(p_nom = '') => {
           var username = p_nom;
           console.log(username);
-          await fetch('http://192.168.155.127:80/php/mobile_api/progression_api.php',{
+          await fetch('http://172.20.28.2:8080/serveurweb_smartcage/php/mobile_api/progression_api.php',{
             method:'post',
             header:{
                 'Accept': 'application/json',
