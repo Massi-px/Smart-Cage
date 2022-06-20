@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Dimensions, ImageBackground, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Personne from '../../class/CPersonne';
 
@@ -18,8 +18,6 @@ export default class EntraineurScreen extends Component {
   }
 
   render = () =>{
-
-    const {goBack} = this.props.navigation;
 
     var ConnexionUser = Personne.getInstance();
     var information = ConnexionUser.getInformationJoueur();
@@ -118,7 +116,5 @@ const styles = StyleSheet.create({
     fontFamily: 'SFBold',
     fontSize:25,
   },
-
-
 
 })

@@ -13,7 +13,6 @@ export default class JoueurScreen extends Component {
   openMenu = () => {this.props.navigation.openDrawer();}
 
   render = () =>{
-    const {goBack} = this.props.navigation;
 
     var ConnexionUser = Personne.getInstance();
     var information = ConnexionUser.getInformationJoueur();
