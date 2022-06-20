@@ -9,8 +9,8 @@ export default class EntraineurScreen extends Component {
     super(props);
   }
 
-  goToEntraineurParametre = () => {
-    this.props.navigation.push('EntraineurParametre');
+  goToLogin = () => {
+    this.props.navigation.push('Login');
   }
   
   openMenu = () => {
@@ -39,15 +39,14 @@ export default class EntraineurScreen extends Component {
         <View style={styles.BlockHamburgerMenu}>
           <TouchableOpacity onPress={this.openMenu}>
             <FontAwesome5 name="bars" size={24} color='lightgrey' />
-            
           </TouchableOpacity>
         </View>
         <View style = {styles.BlockTextAccueil}>
           <Text style = {styles.TextAccueil}>Accueil</Text>
         </View>
         <View style={styles.parametre}>
-          <TouchableOpacity onPress={this.goToEntraineurParametre}>
-          <Image source={require('../../assets/image/settingslogo.png')}/>
+          <TouchableOpacity onPress={this.goToLogin}>
+          <Image source={require('../../assets/image/logout9.png')}/>
           </TouchableOpacity>
         </View>
     </View>
@@ -101,6 +100,7 @@ const styles = StyleSheet.create({
     width:'100%',
     height:'100%',
     borderRadius:40,
+    padding:10,
     fontSize:20,
   },
 

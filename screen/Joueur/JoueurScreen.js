@@ -8,7 +8,7 @@ export default class JoueurScreen extends Component {
   constructor(props) {
     super(props);
   }
-  goToJoueurParametre = () => {this.props.navigation.push('JoueurParametre');}
+  goToLogin = () => {this.props.navigation.push('Login');}
   
   openMenu = () => {this.props.navigation.openDrawer();}
 
@@ -44,8 +44,8 @@ export default class JoueurScreen extends Component {
           <Text style = {styles.TextAccueil}>Accueil</Text>
         </View>
         <View style={styles.parametre}>
-          <TouchableOpacity onPress={this.goToJoueurParametre}>
-          <Image source={require('../../assets/image/settingslogo.png')}/>
+          <TouchableOpacity onPress={this.goToLogin}>
+          <Image source={require('../../assets/image/logout9.png')}/>
           </TouchableOpacity>
         </View>
     </View>
